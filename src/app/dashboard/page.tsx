@@ -11,7 +11,7 @@ export default async function Dashboard() {
   const users = await prisma.user.findMany();
 
   return (
-    <div className="flex flex-col">
+    <>
       <div>Authenticated: {session.user.fullName}</div>
       <div>Rating: {session.user.rating}</div>
       <div>Access: {session.user.access ? "yes" : "no"}</div>
@@ -27,6 +27,6 @@ export default async function Dashboard() {
           <Link href={"/api/logout"}>Sign Out</Link>
         </Button>
       </div>
-    </div>
+    </>
   );
 }

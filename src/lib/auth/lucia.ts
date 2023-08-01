@@ -25,7 +25,7 @@ export const auth = lucia({
 export const vatsimAuth = vatsim(auth, {
   clientId: process.env.VATSIM_CLIENT_ID!,
   clientSecret: process.env.VATSIM_CLIENT_SECRET!,
-  redirectUri: "http://localhost:3000/api/login/vatsim/callback",
+  redirectUri: process.env.VATSIM_REDIRECT_URI!,
   scope: ["full_name vatsim_details email"],
 });
 
