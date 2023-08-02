@@ -38,6 +38,7 @@ export const GET = async (request: NextRequest) => {
           full_name: vatsimUser.data.personal.name_full,
           rating: vatsimUser.data.vatsim.rating.short,
           access: false,
+          cid: vatsimUser.data.cid,
         },
       });
       return user;
@@ -64,6 +65,7 @@ export const GET = async (request: NextRequest) => {
         statusText: e.message,
       });
     }
+    console.log(e);
     return new Response(null, {
       status: 500,
     });
