@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { getUserSession } from "@/utils/session";
 import Image from "next/image";
 import Link from "next/link";
-import logo from "../../public/images/MainWhite.png";
 
 export const NavBar = async () => {
   const session = await getUserSession();
@@ -11,12 +10,11 @@ export const NavBar = async () => {
   return (
     <div className="flex w-full items-center justify-between p-2">
       <div className="flex items-center gap-x-2">
-        <Link href="/dashboard">
-          <Image
-            src={logo}
-            alt="VATMENA Logo"
-            className="flex flex-row items-baseline relative h-20 w-20"
-          />
+        <Link
+          href="/dashboard"
+          className="flex items-baseline relative h-20 w-20"
+        >
+          <Image src={"/images/MainWhite.png"} alt="VATMENA Logo" fill />
         </Link>
         <NavBarTabs />
       </div>
