@@ -32,7 +32,14 @@ export const GET = async (request: NextRequest) => {
       }) => Promise<Record<any, any>>;
     } = await vatsimAuth.validateCallback(code);
     const getUser = async () => {
-      if (existingUser) return existingUser;
+      if (existingUser) {
+        // update user info
+        const user = await auth.updateUserAttributes(existingUser.userId, {
+          full_name: vatsimUser.data.personal.name_full as string,
+          rating: vatsimUser.data.vatsim.rating.short as string,
+        });
+        return user;
+      }
       const user = await createUser({
         attributes: {
           full_name: vatsimUser.data.personal.name_full,
