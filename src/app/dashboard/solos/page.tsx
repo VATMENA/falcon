@@ -5,7 +5,6 @@ import { prisma } from "@/lib/db/prisma";
 import { unstable_cache } from "next/cache";
 
 export default async function SolosPage() {
-  // const solos = await prisma.solo.findMany();
   "use server";
   const solos = await unstable_cache(
     async () => await prisma.solo.findMany(),

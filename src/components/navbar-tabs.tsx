@@ -25,14 +25,14 @@ export const NavBarTabs = () => {
       </Button>
       <Button
         asChild
-        variant={segment === "upgrade" ? "secondary" : "ghost"}
+        variant={segment === "transfers" ? "secondary" : "ghost"}
         className="text-lg"
       >
         <Link href={"/dashboard/transfers"}>Transfers</Link>
       </Button>
       <Button
         asChild
-        variant={segment === "upgrade" ? "secondary" : "ghost"}
+        variant={segment === "solos" ? "secondary" : "ghost"}
         className="text-lg"
       >
         <Link href={"/dashboard/solos"}>Solos</Link>
