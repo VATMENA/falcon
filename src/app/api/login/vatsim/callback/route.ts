@@ -1,10 +1,23 @@
 // app/login/github/callback/route.ts
-import { auth, vatsimAuth } from "@/lib/auth/lucia";
-import { OAuthRequestError } from "@lucia-auth/oauth";
-import type { VatsimUser } from "@vatmena/vatsim-lucia";
+import { auth } from "@/lib/auth/lucia";
+import {
+  OAuthRequestError,
+  __experimental_validateOAuth2AuthorizationCode as getTokens,
+  providerUserAuth,
+} from "@lucia-auth/oauth";
 import { cookies } from "next/headers";
 
+import { VATSIM_URL } from "@/constants";
+import { VatsimUser } from "@/types/user";
 import type { NextRequest } from "next/server";
+
+type AuthorizationResult = {
+  scopes: string[];
+  token_type: string;
+  access_token: string;
+  expires_in: number;
+  refresh_token: string;
+};
 
 export const GET = async (request: NextRequest) => {
   const cookieStore = cookies();
@@ -19,18 +32,32 @@ export const GET = async (request: NextRequest) => {
     });
   }
   try {
-    const {
-      existingUser,
-      vatsimUser,
-      createUser,
-    }: {
-      existingUser: Record<any, any> | null;
-      vatsimUser: VatsimUser;
-      createUser: (options: {
-        userId?: string;
-        attributes: Record<string, any>;
-      }) => Promise<Record<any, any>>;
-    } = await vatsimAuth.validateCallback(code);
+    const tokens = await getTokens<AuthorizationResult>(
+      code,
+      `${VATSIM_URL}/oauth/token`,
+      {
+        clientId: process.env.VATSIM_CLIENT_ID!,
+        redirectUri: process.env.VATSIM_REDIRECT_URI!,
+        clientPassword: {
+          authenticateWith: "client_secret",
+          clientSecret: process.env.VATSIM_CLIENT_SECRET!,
+        },
+      }
+    );
+
+    const response = await fetch(`${VATSIM_URL}/api/user`, {
+      headers: {
+        Authorization: `Bearer ${tokens.access_token}`,
+      },
+    });
+    const vatsimUser = (await response.json()) as VatsimUser;
+
+    const { existingUser, createUser } = await providerUserAuth(
+      auth,
+      "vatsim",
+      vatsimUser.data.cid
+    );
+
     const getUser = async () => {
       if (existingUser) {
         // update user info
@@ -45,7 +72,7 @@ export const GET = async (request: NextRequest) => {
           full_name: vatsimUser.data.personal.name_full,
           rating: vatsimUser.data.vatsim.rating.short,
           access: false,
-          cid: vatsimUser.data.cid,
+          cid: parseInt(vatsimUser.data.cid),
         },
       });
       return user;
@@ -69,7 +96,6 @@ export const GET = async (request: NextRequest) => {
       // invalid code
       return new Response(null, {
         status: 400,
-        statusText: e.message,
       });
     }
     console.log(e);
