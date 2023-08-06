@@ -19,3 +19,13 @@ export const transferFormSchema = z.object({
   ]),
   comment: z.string(),
 });
+
+export const soloFormSchema = z.object({
+  cid: z.string().length(7, {
+    message: "CID must be 7 characters long.",
+  }),
+  full_name: z.string(),
+  position: z.string(),
+  expiry: z.date(),
+  instructor: z.string(),
+});

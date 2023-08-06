@@ -30,6 +30,13 @@ export const NavBarTabs = () => {
       >
         <Link href={"/dashboard/transfers"}>Transfers</Link>
       </Button>
+      <Button
+        asChild
+        variant={segment === "upgrade" ? "secondary" : "ghost"}
+        className="text-lg"
+      >
+        <Link href={"/dashboard/solos"}>Solos</Link>
+      </Button>
     </>
   );
 };

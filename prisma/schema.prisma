@@ -41,3 +41,12 @@ model Key {
 
   @@index([user_id])
 }
+
+model Solo {
+  id         String   @id @unique @default(uuid())
+  cid        String   @unique
+  full_name  String
+  position   String
+  expiry     DateTime
+  instructor String
+}
