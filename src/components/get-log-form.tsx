@@ -23,6 +23,7 @@ export const LogForm = ({ getLogs }: { getLogs: () => Promise<Log[]> }) => {
       <TableHeader>
         <TableRow>
           <TableHead className="w-[200px]">Created At</TableHead>
+          <TableHead>Time</TableHead>
           <TableHead>Message</TableHead>
         </TableRow>
       </TableHeader>
@@ -30,6 +31,7 @@ export const LogForm = ({ getLogs }: { getLogs: () => Promise<Log[]> }) => {
         {logs.map((log) => (
           <TableRow key={log.id}>
             <TableCell>{log.created_at.toDateString()}</TableCell>
+            <TableCell>{log.created_at.toTimeString()}</TableCell>
             <TableCell>{log.message}</TableCell>
           </TableRow>
         ))}

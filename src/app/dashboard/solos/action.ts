@@ -32,9 +32,21 @@ export const addSolo = async (input: z.infer<typeof soloFormSchema>) => {
 };
 
 export const deleteSolo = async (cid: string) => {
-  await prisma.solo.delete({
+  const session = await getUserSession();
+
+  const solo = await prisma.solo.delete({
     where: {
       cid,
+    },
+  });
+
+  await prisma.log.create({
+    data: {
+      type: "SOLO",
+      message: `${session!.user.fullName} (${
+        session!.user.cid
+      }): Deleted solo on ${solo.position} for ${cid}`,
+      cid: solo.cid,
     },
   });
   revalidateTag("solo");
