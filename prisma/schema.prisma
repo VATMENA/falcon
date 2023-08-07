@@ -50,3 +50,17 @@ model Solo {
   expiry     DateTime
   instructor String
 }
+
+model Log {
+  id         String   @id @unique @default(uuid())
+  type       LogType
+  cid        String
+  message    String
+  created_at DateTime @default(now())
+}
+
+enum LogType {
+  UPGRADE
+  TRANSFER
+  SOLO
+}
