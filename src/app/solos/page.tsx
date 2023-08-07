@@ -2,6 +2,8 @@ import { publicSolosColumns } from "@/app/solos/columns";
 import { PublicSolosTable } from "@/app/solos/data-table";
 import { prisma } from "@/lib/db/prisma";
 
+export const revalidate = 1;
+
 export default async function PublicSolosPage() {
   const solos = await prisma.solo.findMany();
 

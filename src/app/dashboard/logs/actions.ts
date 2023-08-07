@@ -34,3 +34,14 @@ export const getUpgradeLogs = async () => {
     },
   });
 };
+
+export const getHQLogs = async () => {
+  return await prisma.log.findMany({
+    orderBy: {
+      created_at: "desc",
+    },
+    where: {
+      type: "HQ",
+    },
+  });
+};
