@@ -7,7 +7,7 @@ import { Cross1Icon } from "@radix-ui/react-icons";
 import { ColumnDef } from "@tanstack/react-table";
 import { useTransition } from "react";
 
-export const columns: ColumnDef<Solo>[] = [
+export const solosColumns: ColumnDef<Solo>[] = [
   {
     accessorKey: "cid",
     header: "CID",

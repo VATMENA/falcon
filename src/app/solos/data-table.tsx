@@ -24,7 +24,7 @@ interface DataTableProps<TData, TValue> {
   data: TData[];
 }
 
-export function SolosTable<TData, TValue>({
+export function PublicSolosTable<TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {

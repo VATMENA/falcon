@@ -6,7 +6,7 @@ import { User } from "@prisma/client";
 import { ColumnDef } from "@tanstack/react-table";
 import { useTransition } from "react";
 
-export const columns: ColumnDef<User>[] = [
+export const usersColumns: ColumnDef<User>[] = [
   {
     accessorKey: "cid",
     header: "CID",
