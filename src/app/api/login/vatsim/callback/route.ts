@@ -72,6 +72,11 @@ export const GET = async (request: NextRequest) => {
           full_name: vatsimUser.data.personal.name_full,
           rating: vatsimUser.data.vatsim.rating.short,
           access: false,
+          log: false,
+          transfer: false,
+          upgrade: false,
+          solo: false,
+          user: false,
           cid: parseInt(vatsimUser.data.cid),
         },
       });

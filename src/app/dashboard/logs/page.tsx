@@ -4,8 +4,13 @@ import {
   getUpgradeLogs,
 } from "@/app/dashboard/logs/actions";
 import { LogForm } from "@/components/get-log-form";
+import { getUserSession } from "@/utils/session";
+import { redirect } from "next/navigation";
 
-export default function LogsPage() {
+export default async function LogsPage() {
+  const session = await getUserSession();
+  if (!session?.user.log) return redirect("/dashboard");
+
   return (
     <div className="flex flex-col gap-y-4">
       <div className="flex flex-col gap-y-2">

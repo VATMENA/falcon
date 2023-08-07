@@ -17,6 +17,11 @@ export const auth = lucia({
       fullName: data.full_name,
       rating: data.rating,
       access: data.access,
+      solo: data.solo,
+      log: data.log,
+      upgrade: data.upgrade,
+      transfer: data.transfer,
+      user: data.user,
       cid: data.cid,
     };
   },

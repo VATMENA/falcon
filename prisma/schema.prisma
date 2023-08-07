@@ -17,7 +17,12 @@ model User {
   full_name String
   rating    String
 
-  access Boolean @default(false)
+  access   Boolean @default(false)
+  log      Boolean @default(false)
+  upgrade  Boolean @default(false)
+  transfer Boolean @default(false)
+  solo     Boolean @default(false)
+  user     Boolean @default(false)
 
   auth_session Session[]
   auth_key     Key[]

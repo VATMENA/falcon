@@ -16,7 +16,7 @@ export const NavBar = async () => {
         >
           <Image src={"/images/MainWhite.png"} alt="VATMENA Logo" fill />
         </Link>
-        <NavBarTabs />
+        <NavBarTabs user={session!.user} />
       </div>
       <div className="flex items-center gap-x-4 px-2">
         <div className="text-md">{session!.user.fullName}</div>

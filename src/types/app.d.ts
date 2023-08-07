@@ -6,6 +6,11 @@ declare namespace Lucia {
     full_name: string;
     rating: string;
     access: boolean;
+    upgrade: boolean;
+    transfer: boolean;
+    solo: boolean;
+    log: boolean;
+    user: boolean;
     cid: number;
   };
   type DatabaseSessionAttributes = {};
