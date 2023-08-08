@@ -2,7 +2,6 @@ import { prisma } from "@/lib/db/prisma";
 import { prisma as prismaAdapter } from "@lucia-auth/adapter-prisma";
 import { lucia } from "lucia";
 import { nextjs } from "lucia/middleware";
-import "lucia/polyfill/node";
 
 export const auth = lucia({
   env: "DEV",
