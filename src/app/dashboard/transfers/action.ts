@@ -11,7 +11,7 @@ export const updateSubdivision = async (
 ) => {
   const session = await getUserSession();
 
-  if (session!.user.cid === memberId) {
+  if (session!.user.cid == memberId) {
     console.log(session?.user.cid);
     console.log(memberId);
     return {
