@@ -2,7 +2,6 @@
 
 import { prisma } from "@/lib/db/prisma";
 import { transferFormSchema } from "@/lib/form-schemas";
-import { updateMember } from "@/lib/vatsim/member";
 import { getUserSession } from "@/utils/session";
 import { z } from "zod";
 
@@ -15,7 +14,6 @@ export const updateSubdivision = async (
   if (session?.user.cid === memberId) {
     return {
       error: "You cannot transfer yourself",
-      member: null,
     };
   }
 
@@ -31,13 +29,12 @@ export const updateSubdivision = async (
     },
   });
 
-  const member = await updateMember(memberId, {
-    comment: input.comment,
-    subdivision_id: input.subdivision,
-  });
+  // const member = await updateMember(memberId, {
+  //   comment: input.comment,
+  //   subdivision_id: input.subdivision,
+  // });
 
   return {
     error: "",
-    member,
   };
 };
