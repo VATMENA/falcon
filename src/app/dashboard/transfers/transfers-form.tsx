@@ -90,8 +90,15 @@ export default function TransfersForm() {
                 updateSubdivision(member.id, {
                   comment: v.comment,
                   subdivision: v.subdivision,
-                }).then(() => {
+                }).then((data) => {
                   setOpen(false);
+                  if (data.error) {
+                    toast({
+                      title: "Transfer Unsuccesful",
+                      description: data.error,
+                      variant: "destructive",
+                    });
+                  }
                   toast({
                     title: "Transfer Successful",
                     description: `${member.name_first} ${

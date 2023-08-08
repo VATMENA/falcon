@@ -12,10 +12,12 @@ export const updateSubdivision = async (
 ) => {
   const session = await getUserSession();
 
-  await updateMember(memberId, {
-    comment: input.comment,
-    subdivision_id: input.subdivision,
-  });
+  if (session?.user.cid === memberId) {
+    return {
+      error: "You cannot transfer yourself",
+      member: null,
+    };
+  }
 
   await prisma.log.create({
     data: {
@@ -28,4 +30,14 @@ export const updateSubdivision = async (
       cid: memberId.toString(),
     },
   });
+
+  const member = await updateMember(memberId, {
+    comment: input.comment,
+    subdivision_id: input.subdivision,
+  });
+
+  return {
+    error: "",
+    member,
+  };
 };
