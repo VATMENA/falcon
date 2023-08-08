@@ -92,6 +92,7 @@ export default function TransfersForm() {
                   subdivision: v.subdivision,
                 }).then((data) => {
                   setOpen(false);
+                  console.log(data);
                   if (data.error) {
                     toast({
                       title: "Transfer Unsuccesful",
