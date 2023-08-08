@@ -24,7 +24,6 @@ export const MembershipTable = ({
   useEffect(() => {
     getDivisionMembers().then((members) => {
       setMembers(members);
-      console.log(members.items);
     });
   }, [getDivisionMembers]);
 
