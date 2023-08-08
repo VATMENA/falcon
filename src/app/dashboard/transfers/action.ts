@@ -13,8 +13,19 @@ export const updateSubdivision = async (
   const session = await getUserSession();
 
   if (session!.user.cid == memberId) {
+    await prisma.log.create({
+      data: {
+        type: "TRANSFER",
+        message: `${session!.user.fullName} (${
+          session!.user.cid
+        }: Attempted to transfer themselves to ${
+          input.subdivision
+        } with comment: \"${input.comment}\"`,
+        cid: memberId.toString(),
+      },
+    });
     return {
-      error: "You cannot transfer yourself",
+      error: "You cannot transfer yourself!",
     };
   }
 

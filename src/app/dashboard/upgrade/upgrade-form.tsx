@@ -90,14 +90,22 @@ export default function UpgradeForm() {
                 updateRating(member.id, {
                   comment: v.comment,
                   rating: v.rating,
-                }).then(() => {
+                }).then((data) => {
                   setOpen(false);
-                  toast({
-                    title: "Rating updated",
-                    description: `Rating for ${member.name_first} ${
-                      member.name_last
-                    } has been updated to ${parseRating(v.rating)}`,
-                  });
+                  if (data.error) {
+                    toast({
+                      title: "Upgrade Unsuccesful",
+                      description: data.error,
+                      variant: "destructive",
+                    });
+                  } else {
+                    toast({
+                      title: "Rating Updated",
+                      description: `Rating for ${member.name_first} ${
+                        member.name_last
+                      } has been updated to ${parseRating(v.rating)}`,
+                    });
+                  }
                 });
               });
             })}

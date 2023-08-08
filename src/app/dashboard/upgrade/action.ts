@@ -13,6 +13,12 @@ export const updateRating = async (
 ) => {
   const session = await getUserSession();
 
+  if (session!.user.cid == memberId) {
+    return {
+      error: "You cannot transfer yourself!",
+    };
+  }
+
   await updateMember(memberId, {
     ...input,
   });
@@ -28,4 +34,6 @@ export const updateRating = async (
       cid: memberId.toString(),
     },
   });
+
+  return {};
 };
