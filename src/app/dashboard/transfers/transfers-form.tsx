@@ -98,15 +98,16 @@ export default function TransfersForm() {
                       description: data.error,
                       variant: "destructive",
                     });
+                  } else {
+                    toast({
+                      title: "Transfer Successful",
+                      description: `${member.name_first} ${
+                        member.name_last
+                      } has been successfully transferred to ${
+                        Subdivision[v.subdivision as keyof typeof Subdivision]
+                      }`,
+                    });
                   }
-                  toast({
-                    title: "Transfer Successful",
-                    description: `${member.name_first} ${
-                      member.name_last
-                    } has been successfully transferred to ${
-                      Subdivision[v.subdivision as keyof typeof Subdivision]
-                    }`,
-                  });
                 });
               });
             })}
