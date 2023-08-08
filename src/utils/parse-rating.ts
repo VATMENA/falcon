@@ -16,6 +16,10 @@ export const parseRating = (rating: number) => {
       return "I1";
     case 10:
       return "I3";
+    case 11:
+      return "SUP";
+    case 12:
+      return "ADM";
     default:
       return "N/A";
   }

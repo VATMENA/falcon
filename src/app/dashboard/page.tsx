@@ -1,15 +1,12 @@
-import { prisma } from "@/lib/db/prisma";
-import { getUserSession } from "@/utils/session";
+import { getDivisionMembers } from "@/app/dashboard/(main-page)/actions";
+import { MembershipTable } from "@/app/dashboard/(main-page)/membership-table";
+
+export const fetchCache = "force-no-store";
 
 export default async function Dashboard() {
-  const session = await getUserSession();
-  const users = await prisma.user.findMany();
-
   return (
     <>
-      <div>Authenticated: {session!.user.fullName}</div>
-      <div>Rating: {session!.user.rating}</div>
-      <div>Access: {session!.user.access ? "yes" : "no"}</div>
+      <MembershipTable getDivisionMembers={getDivisionMembers} />
     </>
   );
 }

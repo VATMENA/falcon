@@ -1,3 +1,5 @@
+import { VatsimMemberResponse } from "@/lib/vatsim/member";
+
 export const Subdivision = {
   ARB: "Arabian vACC",
   JOR: "Jordan vACC",
@@ -7,3 +9,8 @@ export const Subdivision = {
   IRN: "Iran vACC",
   NEA: "North East Africa vACC",
 } as const;
+
+export interface DivisionMembersResponse {
+  items: VatsimMemberResponse[];
+  count: number;
+}
