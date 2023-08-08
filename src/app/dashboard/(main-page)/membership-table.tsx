@@ -261,13 +261,23 @@ export const MembershipTable = ({
     <Table>
       <TableHeader>
         <TableRow>
-          <TableHead className="w-[200px]">Created At</TableHead>
-          <TableHead>Message</TableHead>
+          <TableHead className="w-[200px]">Subdivision</TableHead>
+          <TableHead>Members</TableHead>
+          <TableHead>OBS</TableHead>
+          <TableHead>S1</TableHead>
+          <TableHead>S2</TableHead>
+          <TableHead>S3</TableHead>
+          <TableHead>C1</TableHead>
+          <TableHead>C3</TableHead>
+          <TableHead>I1</TableHead>
+          <TableHead>I3</TableHead>
+          <TableHead>SUP</TableHead>
+          <TableHead>ADM</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
         <TableRow>
-          <TableCell colSpan={2}>No logs found.</TableCell>
+          <TableCell colSpan={2}>Loading....</TableCell>
         </TableRow>
       </TableBody>
     </Table>
