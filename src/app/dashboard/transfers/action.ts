@@ -2,7 +2,6 @@
 
 import { prisma } from "@/lib/db/prisma";
 import { transferFormSchema } from "@/lib/form-schemas";
-import { updateMember } from "@/lib/vatsim/member";
 import { getUserSession } from "@/utils/session";
 import { z } from "zod";
 
@@ -30,12 +29,10 @@ export const updateSubdivision = async (
     },
   });
 
-  await updateMember(memberId, {
-    comment: input.comment,
-    subdivision_id: input.subdivision,
-  });
+  // await updateMember(memberId, {
+  //   comment: input.comment,
+  //   subdivision_id: input.subdivision,
+  // });
 
-  return {
-    error: null,
-  };
+  return {};
 };
