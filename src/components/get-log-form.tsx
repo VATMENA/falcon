@@ -9,15 +9,8 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Log } from "@prisma/client";
-import { useEffect, useState } from "react";
 
-export const LogForm = ({ getLogs }: { getLogs: () => Promise<Log[]> }) => {
-  const [logs, setLogs] = useState<Log[]>([]);
-
-  useEffect(() => {
-    getLogs().then((logs) => setLogs(logs));
-  }, [getLogs]);
-
+export const LogForm = ({ logs }: { logs: Log[] }) => {
   return logs.length > 0 ? (
     <Table>
       <TableHeader>

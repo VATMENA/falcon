@@ -9,24 +9,12 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { DivisionMembersResponse, Subdivision } from "@/types/subdivisions";
-import { useEffect, useState } from "react";
 
 export const MembershipTable = ({
-  getDivisionMembers,
+  members,
 }: {
-  getDivisionMembers: () => Promise<DivisionMembersResponse>;
+  members: DivisionMembersResponse;
 }) => {
-  const [members, setMembers] = useState<DivisionMembersResponse>({
-    items: [],
-    count: 0,
-  });
-
-  useEffect(() => {
-    getDivisionMembers().then((members) => {
-      setMembers(members);
-    });
-  }, [getDivisionMembers]);
-
   return members.items.length > 0 ? (
     <Table>
       <TableHeader>
