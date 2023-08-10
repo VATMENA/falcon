@@ -25,9 +25,9 @@ export async function updateAccess(access: boolean, userId: string) {
     data: {
       type: "HQ",
       cid: session!.user.cid.toString(),
-      message: `HQ access for ${user.full_name} ${
-        access ? "granted" : "revoked"
-      }`,
+      message: `${session!.user.fullName} (${session!.user.cid}): ${
+        access ? "Granted" : "Revoked"
+      } HQ access for ${user.full_name} (${user.cid})`,
     },
   });
 }
@@ -54,9 +54,9 @@ export async function updateSolo(solo: boolean, userId: string) {
     data: {
       type: "HQ",
       cid: session!.user.cid.toString(),
-      message: `Solo permission access for ${user.full_name} ${
-        solo ? "granted" : "revoked"
-      }`,
+      message: `${session!.user.fullName} (${session!.user.cid}): ${
+        solo ? "Granted" : "Revoked"
+      } solo access for ${user.full_name} (${user.cid})`,
     },
   });
 }
@@ -83,9 +83,9 @@ export async function updateLog(log: boolean, userId: string) {
     data: {
       type: "HQ",
       cid: session!.user.cid.toString(),
-      message: `Log permission access for ${user.full_name} ${
-        log ? "granted" : "revoked"
-      }`,
+      message: `${session!.user.fullName} (${session!.user.cid}): ${
+        log ? "Granted" : "Revoked"
+      } log access for ${user.full_name} (${user.cid})`,
     },
   });
 }
@@ -112,9 +112,9 @@ export async function updateTransfer(transfer: boolean, userId: string) {
     data: {
       type: "HQ",
       cid: session!.user.cid.toString(),
-      message: `Transfer permission access for ${user.full_name} ${
-        transfer ? "granted" : "revoked"
-      }`,
+      message: `${session!.user.fullName} (${session!.user.cid}): ${
+        transfer ? "Granted" : "Revoked"
+      } transfer access for ${user.full_name} (${user.cid})`,
     },
   });
 }
@@ -141,9 +141,9 @@ export async function updateUpgrade(upgrade: boolean, userId: string) {
     data: {
       type: "HQ",
       cid: session!.user.cid.toString(),
-      message: `Upgrade permission access for ${user.full_name} ${
-        upgrade ? "granted" : "revoked"
-      }`,
+      message: `${session!.user.fullName} (${session!.user.cid}): ${
+        upgrade ? "Granted" : "Revoked"
+      } upgrade access for ${user.full_name} (${user.cid})`,
     },
   });
 }
@@ -169,9 +169,9 @@ export async function updateUserAccess(userAccess: boolean, userId: string) {
     data: {
       type: "HQ",
       cid: session!.user.cid.toString(),
-      message: `User permission access for ${user.full_name} ${
-        userAccess ? "granted" : "revoked"
-      }`,
+      message: `${session!.user.fullName} (${session!.user.cid}): ${
+        userAccess ? "Granted" : "Revoked"
+      } user access for ${user.full_name} (${user.cid})`,
     },
   });
 }

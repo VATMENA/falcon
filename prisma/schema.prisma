@@ -64,6 +64,11 @@ model Log {
   created_at DateTime @default(now())
 }
 
+model ApiKey {
+  id  Int    @unique @default(autoincrement())
+  key String @unique
+}
+
 enum LogType {
   UPGRADE
   TRANSFER
