@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/db/prisma";
 import { Solo } from "@prisma/client";
+import { revalidateTag } from "next/cache";
 import { NextRequest } from "next/server";
 
 export const GET = async (request: NextRequest) => {
@@ -26,6 +27,8 @@ export const POST = async (request: NextRequest) => {
   const solo = await prisma.solo.create({
     data: body as Solo,
   });
+
+  revalidateTag("solo");
 
   return new Response(JSON.stringify(solo), {
     status: 200,
