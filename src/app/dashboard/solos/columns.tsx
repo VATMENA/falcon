@@ -23,7 +23,7 @@ export const solosColumns: ColumnDef<Solo>[] = [
   },
   {
     accessorKey: "expiry",
-    header: "Expiry",
+    header: "Expiry (local time)",
     cell: ({ row }) => {
       const formatted = new Date(row.original.expiry).toDateString();
       const daysLeft = Math.round(
