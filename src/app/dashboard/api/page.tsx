@@ -29,7 +29,7 @@ export default async function ApiPage() {
         cid: session!.user.cid.toString(),
         message: `${session!.user.fullName} (${
           session!.user.cid
-        }): Generate an API key.`,
+        }): Generated an API key`,
       },
     });
     revalidatePath("/dashboard/api");
@@ -51,7 +51,7 @@ export default async function ApiPage() {
         cid: session!.user.cid.toString(),
         message: `${session!.user.fullName} (${
           session!.user.cid
-        }): Deleted an API key.`,
+        }): Deleted an API key`,
       },
     });
     revalidatePath("/dashboard/api");
