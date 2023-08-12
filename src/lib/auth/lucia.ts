@@ -16,7 +16,7 @@ export const auth = lucia({
     return {
       fullName: data.full_name,
       rating: data.rating,
-      subdivision: data.subdivison,
+      subdivision: data.subdivision,
       access: data.access,
       solo: data.solo,
       log: data.log,
