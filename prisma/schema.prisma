@@ -12,10 +12,11 @@ datasource db {
 }
 
 model User {
-  id        String @id @unique
-  cid       BigInt @unique
-  full_name String
-  rating    String
+  id          String @id @unique
+  cid         BigInt @unique
+  full_name   String
+  rating      String
+  subdivision String @default("")
 
   access   Boolean @default(false)
   log      Boolean @default(false)

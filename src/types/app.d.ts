@@ -5,6 +5,7 @@ declare namespace Lucia {
   type DatabaseUserAttributes = {
     full_name: string;
     rating: string;
+    subdivision: string;
     access: boolean;
     upgrade: boolean;
     transfer: boolean;

@@ -62,8 +62,9 @@ export const GET = async (request: NextRequest) => {
       if (existingUser) {
         // update user info
         const user = await auth.updateUserAttributes(existingUser.userId, {
-          full_name: vatsimUser.data.personal.name_full as string,
-          rating: vatsimUser.data.vatsim.rating.short as string,
+          full_name: vatsimUser.data.personal.name_full,
+          rating: vatsimUser.data.vatsim.rating.short,
+          subdivision: vatsimUser.data.vatsim.subdivision.id,
         });
         return user;
       }
@@ -71,6 +72,7 @@ export const GET = async (request: NextRequest) => {
         attributes: {
           full_name: vatsimUser.data.personal.name_full,
           rating: vatsimUser.data.vatsim.rating.short,
+          subdivision: vatsimUser.data.vatsim.subdivision.id,
           access: false,
           log: false,
           transfer: false,
