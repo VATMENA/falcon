@@ -1,11 +1,26 @@
 import { prisma } from "@/lib/db/prisma";
-import { Solo } from "@prisma/client";
-import { revalidateTag } from "next/cache";
+import { UpgradeRequest } from "@prisma/client";
+import { revalidatePath } from "next/cache";
 import { NextRequest } from "next/server";
 
 export const GET = async (request: NextRequest) => {
-  const solos = await prisma.solo.findMany();
-  return new Response(JSON.stringify(solos), {
+  const apiKey = request.headers.get("X-API-Key");
+  if (!apiKey) return new Response("Not authorized", { status: 401 });
+
+  const apiKeyExists = await prisma.apiKey.findUnique({
+    where: {
+      key: apiKey,
+    },
+  });
+  if (!apiKeyExists) return new Response("Not authorized", { status: 401 });
+
+  const upgradeRequests = await prisma.upgradeRequest.findMany({
+    orderBy: {
+      created_at: "desc",
+    },
+  });
+
+  return new Response(JSON.stringify(upgradeRequests), {
     status: 200,
   });
 };
@@ -25,13 +40,13 @@ export const POST = async (request: NextRequest) => {
   if (!apiKeyExists) return new Response("Not authorized", { status: 401 });
 
   try {
-    const solo = await prisma.solo.create({
-      data: body as Solo,
+    const upgradeRequest = await prisma.upgradeRequest.create({
+      data: body as UpgradeRequest,
     });
 
-    revalidateTag("solo");
+    revalidatePath("/dashboard/upgrade");
 
-    return new Response(JSON.stringify(solo), {
+    return new Response(JSON.stringify(upgradeRequest), {
       status: 200,
     });
   } catch (e) {
