@@ -12,11 +12,11 @@ datasource db {
 }
 
 model User {
-  id          String @id @unique
-  cid         BigInt @unique
-  full_name   String
+  id          String  @id @unique
+  cid         BigInt  @unique
+  full_name   String?
   rating      String
-  subdivision String @default("")
+  subdivision String  @default("")
 
   access   Boolean @default(false)
   log      Boolean @default(false)
@@ -62,6 +62,22 @@ model Log {
   type       LogType
   cid        String
   message    String
+  created_at DateTime @default(now())
+}
+
+model TransferRequest {
+  id          String   @id @unique @default(uuid())
+  cid         String
+  comment     String
+  subdivision String
+  created_at  DateTime @default(now())
+}
+
+model UpgradeRequest {
+  id         String   @id @unique @default(uuid())
+  cid        String
+  comment    String
+  rating     Int
   created_at DateTime @default(now())
 }
 

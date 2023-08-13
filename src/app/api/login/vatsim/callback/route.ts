@@ -64,7 +64,7 @@ export const GET = async (request: NextRequest) => {
         const user = await auth.updateUserAttributes(existingUser.userId, {
           full_name: vatsimUser.data.personal.name_full,
           rating: vatsimUser.data.vatsim.rating.short,
-          subdivision: vatsimUser.data.vatsim.subdivision.id,
+          subdivision: vatsimUser.data.vatsim.subdivision.id || undefined,
         });
         return user;
       }

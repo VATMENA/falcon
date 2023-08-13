@@ -1,6 +1,6 @@
 "use client";
 
-import { updateSubdivision } from "@/app/dashboard/transfers/action";
+import { createTransferRequest } from "@/app/dashboard/transfers/action";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -87,8 +87,7 @@ export default function TransfersForm() {
             id="transfer-form"
             onSubmit={transferForm.handleSubmit((v, e) => {
               startTransition(() => {
-                updateSubdivision(member.id, {
-                  comment: v.comment,
+                createTransferRequest(member.id, {
                   subdivision: v.subdivision,
                 }).then((data) => {
                   setOpen(false);
@@ -100,12 +99,12 @@ export default function TransfersForm() {
                     });
                   } else {
                     toast({
-                      title: "Transfer Successful",
-                      description: `${member.name_first} ${
+                      title: "Transfer Request Successful",
+                      description: `Transfer request for ${member.name_first} ${
                         member.name_last
-                      } has been successfully transferred to ${
+                      } to ${
                         Subdivision[v.subdivision as keyof typeof Subdivision]
-                      }`,
+                      } has been successfully created`,
                     });
                   }
                 });
@@ -142,18 +141,6 @@ export default function TransfersForm() {
                 </FormItem>
               )}
             />
-            <FormField
-              control={transferForm.control}
-              name="comment"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Input placeholder="Comment..." {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
             <Dialog open={open} onOpenChange={setOpen}>
               <DialogContent>
                 <DialogHeader>
@@ -182,12 +169,12 @@ export default function TransfersForm() {
                 </DialogHeader>
                 <DialogFooter>
                   <Button type="submit" form="transfer-form">
-                    Upgrade
+                    Transfer
                   </Button>
                 </DialogFooter>
               </DialogContent>
               <DialogTrigger asChild>
-                <Button>Upgrade</Button>
+                <Button>Transfer</Button>
               </DialogTrigger>
             </Dialog>
           </form>

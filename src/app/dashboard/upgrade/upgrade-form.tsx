@@ -1,5 +1,5 @@
 "use client";
-import { updateRating } from "@/app/dashboard/upgrade/action";
+import { createUpgradeRequest } from "@/app/dashboard/upgrade/action";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -87,8 +87,7 @@ export default function UpgradeForm() {
             id="rating-form"
             onSubmit={ratingForm.handleSubmit((v, e) => {
               startTransition(() => {
-                updateRating(member.id, {
-                  comment: v.comment,
+                createUpgradeRequest(member.id, {
                   rating: v.rating,
                 }).then((data) => {
                   setOpen(false);
@@ -100,10 +99,12 @@ export default function UpgradeForm() {
                     });
                   } else {
                     toast({
-                      title: "Rating Updated",
-                      description: `Rating for ${member.name_first} ${
-                        member.name_last
-                      } has been updated to ${parseRating(v.rating)}`,
+                      title: "Upgrade Request Successful",
+                      description: `Rating upgrade request for ${
+                        member.name_first
+                      } ${member.name_last} to ${parseRating(
+                        v.rating
+                      )} has been created`,
                     });
                   }
                 });
@@ -139,18 +140,6 @@ export default function UpgradeForm() {
                       <SelectItem value="10">I3</SelectItem>
                     </SelectContent>
                   </Select>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={ratingForm.control}
-              name="comment"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Input placeholder="Comment..." {...field} />
-                  </FormControl>
                   <FormMessage />
                 </FormItem>
               )}

@@ -9,7 +9,6 @@ export const idFormSchema = z.object({
 
 export const ratingFormSchema = z.object({
   rating: z.coerce.number().min(-1).max(12),
-  comment: z.string(),
 });
 
 export const transferFormSchema = z.object({
@@ -17,7 +16,6 @@ export const transferFormSchema = z.object({
     Object.keys(Subdivision)[0],
     ...Object.keys(Subdivision),
   ]),
-  comment: z.string(),
 });
 
 export const soloFormSchema = z.object({
