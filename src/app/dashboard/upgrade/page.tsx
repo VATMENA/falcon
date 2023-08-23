@@ -74,7 +74,7 @@ export default async function UpgradePage() {
             );
           })
         ) : (
-          <div>No upgrade requests.</div>
+          <div>No Upgrade Requests.</div>
         )}
       </div>
     </div>

@@ -10,7 +10,7 @@ import { revalidatePath } from "next/cache";
 import { z } from "zod";
 
 export const createUpgradeRequest = async (
-  memberId: number,
+  memberId: string,
   input: z.infer<typeof ratingFormSchema>
 ) => {
   const session = await getUserSession();

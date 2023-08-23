@@ -87,7 +87,7 @@ export default function UpgradeForm() {
             id="rating-form"
             onSubmit={ratingForm.handleSubmit((v, e) => {
               startTransition(() => {
-                createUpgradeRequest(member.id, {
+                createUpgradeRequest(member.id.toString(), {
                   rating: v.rating,
                   scoresheet: v.scoresheet,
                 }).then((data) => {

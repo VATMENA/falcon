@@ -87,7 +87,7 @@ export default function TransfersForm() {
             id="transfer-form"
             onSubmit={transferForm.handleSubmit((v, e) => {
               startTransition(() => {
-                createTransferRequest(member.id, {
+                createTransferRequest(member.id.toString(), {
                   subdivision: v.subdivision,
                 }).then((data) => {
                   setOpen(false);

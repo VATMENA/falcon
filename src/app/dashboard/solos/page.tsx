@@ -61,7 +61,7 @@ export default async function SolosPage() {
         solo={session!.user.solo}
       />
       <div className="flex flex-col gap-y-2">
-        <div className="text-xl font-bold">Upgrade Requests</div>
+        <div className="text-xl font-bold">Solo Requests</div>
         {requests.length > 0 ? (
           requests.map((request) => (
             <div key={request.id} className="flex gap-x-2">
@@ -79,7 +79,7 @@ export default async function SolosPage() {
             </div>
           ))
         ) : (
-          <div>No transfer Requests.</div>
+          <div>No Solo Requests.</div>
         )}
       </div>
       <div className="flex flex-col">

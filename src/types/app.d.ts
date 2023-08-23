@@ -12,7 +12,7 @@ declare namespace Lucia {
     solo: boolean;
     log: boolean;
     user: boolean;
-    cid: number;
+    cid: string;
   };
   type DatabaseSessionAttributes = {};
 }

@@ -9,7 +9,7 @@ import { revalidatePath } from "next/cache";
 import { z } from "zod";
 
 export const createTransferRequest = async (
-  memberId: number,
+  memberId: string,
   input: z.infer<typeof transferFormSchema>
 ) => {
   const session = await getUserSession();

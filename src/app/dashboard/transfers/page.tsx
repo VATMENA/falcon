@@ -26,7 +26,7 @@ export default async function TransfersPage() {
           session!.user.cid
         }): Denied transfer request for ${request.cid} to ${
           request.subdivision
-        } denied`,
+        }`,
       },
     });
     await prisma.transferRequest.delete({
@@ -61,7 +61,7 @@ export default async function TransfersPage() {
             </div>
           ))
         ) : (
-          <div>No transfer Requests.</div>
+          <div>No Transfer Requests.</div>
         )}
       </div>
     </div>
