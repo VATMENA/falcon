@@ -9,6 +9,7 @@ export const idFormSchema = z.object({
 
 export const ratingFormSchema = z.object({
   rating: z.coerce.number().min(-1).max(12),
+  scoresheet: z.string().url().optional(),
 });
 
 export const transferFormSchema = z.object({

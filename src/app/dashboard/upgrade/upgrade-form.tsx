@@ -89,6 +89,7 @@ export default function UpgradeForm() {
               startTransition(() => {
                 createUpgradeRequest(member.id, {
                   rating: v.rating,
+                  scoresheet: v.scoresheet,
                 }).then((data) => {
                   setOpen(false);
                   if (data.error) {
@@ -140,6 +141,19 @@ export default function UpgradeForm() {
                       <SelectItem value="10">I3</SelectItem>
                     </SelectContent>
                   </Select>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={ratingForm.control}
+              name="scoresheet"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Scoresheet (if required)</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Google Drive Link..." {...field} />
+                  </FormControl>
                   <FormMessage />
                 </FormItem>
               )}

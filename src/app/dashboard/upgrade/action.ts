@@ -39,7 +39,7 @@ export const createUpgradeRequest = async (
         session!.user.cid
       }): Made an upgrade request for ${memberId} to ${parseRating(
         input.rating
-      )}`,
+      )}. Scoresheet Link: ${input.scoresheet}`,
       cid: memberId.toString(),
     },
   });
@@ -49,6 +49,7 @@ export const createUpgradeRequest = async (
       cid: memberId.toString(),
       comment,
       rating: input.rating,
+      scoresheet: input.scoresheet,
     },
   });
 
@@ -65,7 +66,9 @@ export const upgradeMember = async (request: UpgradeRequest) => {
       type: "UPGRADE",
       message: `${session!.user.fullName} (${session!.user.cid}): Upgraded ${
         request.cid
-      } to ${parseRating(request.rating)}`,
+      } to ${parseRating(request.rating)}. ${
+        request.scoresheet ? "Scoresheet Link: " + request.scoresheet : ""
+      }`,
       cid: request.cid,
     },
   });

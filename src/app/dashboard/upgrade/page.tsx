@@ -47,20 +47,32 @@ export default async function UpgradePage() {
       <div className="flex flex-col gap-y-2">
         <div className="text-xl font-bold">Upgrade Requests</div>
         {requests.length > 0 ? (
-          requests.map((request) => (
-            <div key={request.id} className="flex gap-x-2">
-              <div>
-                {request.cid}: Upgrade to {parseRating(request.rating)} with
-                comment &quot;{request.comment}&quot;
+          requests.map((request) => {
+            return (
+              <div key={request.id} className="flex gap-x-2">
+                <div>
+                  {request.cid}: Upgrade to {parseRating(request.rating)} with
+                  comment &quot;{request.comment}&quot;{" "}
+                  {request.scoresheet && (
+                    <a
+                      href={request.scoresheet}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="underline px-2"
+                    >
+                      Scoresheet
+                    </a>
+                  )}
+                </div>
+                {session!.user.upgrade && (
+                  <>
+                    <ApproveButton request={request} approve={approve} />
+                    <DenyButton request={request} deny={deny} />
+                  </>
+                )}
               </div>
-              {session!.user.upgrade && (
-                <>
-                  <ApproveButton request={request} approve={approve} />
-                  <DenyButton request={request} deny={deny} />
-                </>
-              )}
-            </div>
-          ))
+            );
+          })
         ) : (
           <div>No upgrade requests.</div>
         )}

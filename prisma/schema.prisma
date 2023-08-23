@@ -77,6 +77,7 @@ model UpgradeRequest {
   id         String   @id @unique @default(uuid())
   cid        String
   comment    String
+  scoresheet String?
   rating     Int
   created_at DateTime @default(now())
 }
