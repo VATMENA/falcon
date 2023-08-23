@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { getUserSession } from "@/utils/session";
+import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
@@ -9,7 +10,11 @@ export default async function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center">
-      <div className="flex h-20 w-60 bg-zinc-500 rounded-md items-center justify-center">
+      <div className="flex flex-col  rounded-md items-center justify-center gap-y-4">
+        <div className="flex items-baseline relative h-72 w-72">
+          <Image src={"/images/MainWhiteCropped.png"} alt="VATMENA Logo" fill />
+        </div>
+        <div className="text-white font-bold text-5xl">VATMENA Staff HQ</div>
         <Button asChild>
           <Link href={"/api/login/vatsim"}>Sign In</Link>
         </Button>

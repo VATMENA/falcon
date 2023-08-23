@@ -60,25 +60,28 @@ export default async function SolosPage() {
         data={solos}
         solo={session!.user.solo}
       />
-      {requests.length > 0 ? (
-        requests.map((request) => (
-          <div key={request.id} className="flex gap-x-2">
-            <div>
-              {request.instructor}: Requested solo validation for{" "}
-              {request.full_name}({request.cid}) for {request.position} which
-              expires on {request.expiry.toDateString()}
+      <div className="flex flex-col gap-y-2">
+        <div className="text-xl font-bold">Upgrade Requests</div>
+        {requests.length > 0 ? (
+          requests.map((request) => (
+            <div key={request.id} className="flex gap-x-2">
+              <div>
+                {request.instructor}: Requested solo validation for{" "}
+                {request.full_name}({request.cid}) for {request.position} which
+                expires on {request.expiry.toDateString()}
+              </div>
+              {session!.user.transfer && (
+                <>
+                  <ApproveButton request={request} approve={approve} />
+                  <DenyButton request={request} deny={deny} />
+                </>
+              )}
             </div>
-            {session!.user.transfer && (
-              <>
-                <ApproveButton request={request} approve={approve} />
-                <DenyButton request={request} deny={deny} />
-              </>
-            )}
-          </div>
-        ))
-      ) : (
-        <div>No transfer Requests.</div>
-      )}
+          ))
+        ) : (
+          <div>No transfer Requests.</div>
+        )}
+      </div>
       <div className="flex flex-col">
         <h1 className="text-3xl font-bold">Add Solo Validation</h1>
         <SoloForm />
