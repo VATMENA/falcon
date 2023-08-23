@@ -10,13 +10,13 @@ dependencies:
     version: 3.1.1(react-hook-form@7.45.2)
   '@lucia-auth/adapter-prisma':
     specifier: ^3.0.0
-    version: 3.0.0(@prisma/client@5.1.1)(lucia@2.0.0)
+    version: 3.0.0(@prisma/client@5.2.0)(lucia@2.0.0)
   '@lucia-auth/oauth':
     specifier: latest
-    version: 2.1.1(lucia@2.0.0)
+    version: 2.2.0(lucia@2.0.0)
   '@prisma/client':
-    specifier: 5.1.1
-    version: 5.1.1(prisma@5.1.1)
+    specifier: 5.2.0
+    version: 5.2.0(prisma@5.2.0)
   '@radix-ui/react-checkbox':
     specifier: ^1.0.4
     version: 1.0.4(@types/react-dom@18.2.7)(@types/react@18.2.17)(react-dom@18.2.0)(react@18.2.0)
@@ -122,8 +122,8 @@ devDependencies:
     specifier: ^5.0.0
     version: 5.0.0
   prisma:
-    specifier: ^5.1.1
-    version: 5.1.1
+    specifier: ^5.2.0
+    version: 5.2.0
 
 packages:
 
@@ -271,18 +271,18 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: false
 
-  /@lucia-auth/adapter-prisma@3.0.0(@prisma/client@5.1.1)(lucia@2.0.0):
+  /@lucia-auth/adapter-prisma@3.0.0(@prisma/client@5.2.0)(lucia@2.0.0):
     resolution: {integrity: sha512-qrFA5IID4AulINQbLQLQPIXqE9+M3zjmN558VDhrS3Y7Fdn5dyObPbHijUWw7lGYgOrhxDox9UUG8oyZ3+D1MA==}
     peerDependencies:
       '@prisma/client': ^4.2.0 || ^5.0.0
       lucia: ^2.0.0
     dependencies:
-      '@prisma/client': 5.1.1(prisma@5.1.1)
+      '@prisma/client': 5.2.0(prisma@5.2.0)
       lucia: 2.0.0
     dev: false
 
-  /@lucia-auth/oauth@2.1.1(lucia@2.0.0):
-    resolution: {integrity: sha512-spgYssLCpUzfNuCJNKpZuOrU31SlpXMIvLpBGshotYfKETV3/ubiIUPGK6woPPN7Fhh0rNUgrTGvJ7cfM9DQ5w==}
+  /@lucia-auth/oauth@2.2.0(lucia@2.0.0):
+    resolution: {integrity: sha512-3gY21t62PikfRvkrG3EfILT5etB7IhjwakdJMEXicb8wESTnjYyjS+SFqL05oud7NmLZjCDxnsqjKPQ+GMBlWQ==}
     peerDependencies:
       lucia: ^2.0.0
     dependencies:
@@ -431,8 +431,8 @@ packages:
       tslib: 2.6.1
     dev: false
 
-  /@prisma/client@5.1.1(prisma@5.1.1):
-    resolution: {integrity: sha512-fxcCeK5pMQGcgCqCrWsi+I2rpIbk0rAhdrN+ke7f34tIrgPwA68ensrpin+9+fZvuV2OtzHmuipwduSY6HswdA==}
+  /@prisma/client@5.2.0(prisma@5.2.0):
+    resolution: {integrity: sha512-AiTjJwR4J5Rh6Z/9ZKrBBLel3/5DzUNntMohOy7yObVnVoTNVFi2kvpLZlFuKO50d7yDspOtW6XBpiAd0BVXbQ==}
     engines: {node: '>=16.13'}
     requiresBuild: true
     peerDependencies:
@@ -441,16 +441,16 @@ packages:
       prisma:
         optional: true
     dependencies:
-      '@prisma/engines-version': 5.1.1-1.6a3747c37ff169c90047725a05a6ef02e32ac97e
-      prisma: 5.1.1
+      '@prisma/engines-version': 5.2.0-25.2804dc98259d2ea960602aca6b8e7fdc03c1758f
+      prisma: 5.2.0
     dev: false
 
-  /@prisma/engines-version@5.1.1-1.6a3747c37ff169c90047725a05a6ef02e32ac97e:
-    resolution: {integrity: sha512-owZqbY/wucbr65bXJ/ljrHPgQU5xXTSkmcE/JcbqE1kusuAXV/TLN3/exmz21SZ5rJ7WDkyk70J2G/n68iogbQ==}
+  /@prisma/engines-version@5.2.0-25.2804dc98259d2ea960602aca6b8e7fdc03c1758f:
+    resolution: {integrity: sha512-jsnKT5JIDIE01lAeCj2ghY9IwxkedhKNvxQeoyLs6dr4ZXynetD0vTy7u6wMJt8vVPv8I5DPy/I4CFaoXAgbtg==}
     dev: false
 
-  /@prisma/engines@5.1.1:
-    resolution: {integrity: sha512-NV/4nVNWFZSJCCIA3HIFJbbDKO/NARc9ej0tX5S9k2EVbkrFJC4Xt9b0u4rNZWL4V+F5LAjvta8vzEUw0rw+HA==}
+  /@prisma/engines@5.2.0:
+    resolution: {integrity: sha512-dT7FOLUCdZmq+AunLqB1Iz+ZH/IIS1Fz2THmKZQ6aFONrQD/BQ5ecJ7g2wGS2OgyUFf4OaLam6/bxmgdOBDqig==}
     requiresBuild: true
 
   /@radix-ui/number@1.0.1:
@@ -3203,13 +3203,13 @@ packages:
     engines: {node: '>= 0.8.0'}
     dev: false
 
-  /prisma@5.1.1:
-    resolution: {integrity: sha512-WJFG/U7sMmcc6TjJTTifTfpI6Wjoh55xl4AzopVwAdyK68L9/ogNo8QQ2cxuUjJf/Wa82z/uhyh3wMzvRIBphg==}
+  /prisma@5.2.0:
+    resolution: {integrity: sha512-FfFlpjVCkZwrqxDnP4smlNYSH1so+CbfjgdpioFzGGqlQAEm6VHAYSzV7jJgC3ebtY9dNOhDMS2+4/1DDSM7bQ==}
     engines: {node: '>=16.13'}
     hasBin: true
     requiresBuild: true
     dependencies:
-      '@prisma/engines': 5.1.1
+      '@prisma/engines': 5.2.0
 
   /prop-types@15.8.1:
     resolution: {integrity: sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==}

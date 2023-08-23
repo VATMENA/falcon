@@ -14,7 +14,7 @@ export default async function DashboardLayout({
   return (
     <div className="flex h-full w-full flex-col">
       <NavBar />
-      <div className="flex w-full h-full flex-col px-8">{children}</div>
+      <div className="flex w-full h-full flex-col px-8 pb-4">{children}</div>
     </div>
   );
 }

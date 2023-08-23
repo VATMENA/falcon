@@ -33,15 +33,13 @@ export const NavBarTabs = ({ user }: { user: User }) => {
       >
         <Link href={"/dashboard/transfers"}>Transfers</Link>
       </Button>
-      {user.solo && (
-        <Button
-          asChild
-          variant={segment === "solos" ? "secondary" : "ghost"}
-          className="text-lg"
-        >
-          <Link href={"/dashboard/solos"}>Solos</Link>
-        </Button>
-      )}
+      <Button
+        asChild
+        variant={segment === "solos" ? "secondary" : "ghost"}
+        className="text-lg"
+      >
+        <Link href={"/dashboard/solos"}>Solos</Link>
+      </Button>
       {user.log && (
         <Button
           asChild

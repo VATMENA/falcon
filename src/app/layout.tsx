@@ -15,7 +15,7 @@ export default async function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className="overscroll-none">
-        <div className="flex h-screen w-full grow flex-col">{children}</div>
+        <div className="flex h-full w-full grow flex-col">{children}</div>
         <Toaster />
       </body>
     </html>

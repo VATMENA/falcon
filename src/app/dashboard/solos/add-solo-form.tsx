@@ -1,6 +1,6 @@
 "use client";
 
-import { addSolo } from "@/app/dashboard/solos/action";
+import { addSoloRequest } from "@/app/dashboard/solos/action";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import {
@@ -37,7 +37,7 @@ export const SoloForm = () => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit((data) =>
-          startTransition(() => addSolo(data))
+          startTransition(() => addSoloRequest(data))
         )}
         className=" w-[800px]"
       >
