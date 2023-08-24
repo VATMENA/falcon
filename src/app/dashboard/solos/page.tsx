@@ -70,7 +70,7 @@ export default async function SolosPage() {
                 {request.full_name}({request.cid}) for {request.position} which
                 expires on {request.expiry.toDateString()}
               </div>
-              {session!.user.transfer && (
+              {session!.user.solo && (
                 <>
                   <ApproveButton request={request} approve={approve} />
                   <DenyButton request={request} deny={deny} />

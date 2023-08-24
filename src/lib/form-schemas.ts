@@ -24,7 +24,9 @@ export const soloFormSchema = z.object({
     message: "CID must be 7 characters long.",
   }),
   full_name: z.string(),
-  position: z.string(),
+  position: z.string().length(8, {
+    message: "Please only use the absolute callsign. (For e.g OMDB_TWR)",
+  }),
   expiry: z.date(),
   instructor: z.string(),
 });

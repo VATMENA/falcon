@@ -92,6 +92,15 @@ model SoloRequest {
   created_at DateTime @default(now())
 }
 
+model Instructor {
+  id          String         @id @unique @default(uuid())
+  cid         String         @unique
+  full_name   String
+  type        InstructorType
+  subdivision String
+  created_at  DateTime       @default(now())
+}
+
 model ApiKey {
   id  Int    @unique @default(autoincrement())
   key String @unique
@@ -102,4 +111,9 @@ enum LogType {
   TRANSFER
   SOLO
   HQ
+}
+
+enum InstructorType {
+  LOCAL
+  DIVISIONAL
 }
