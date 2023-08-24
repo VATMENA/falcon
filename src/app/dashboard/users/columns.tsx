@@ -7,7 +7,7 @@ import {
   updateTransfer,
   updateUpgrade,
   updateUserAccess,
-} from "@/app/dashboard/users/actions";
+} from "@/app/dashboard/users/action";
 import { Switch } from "@/components/ui/switch";
 import { User } from "@prisma/client";
 import { ColumnDef } from "@tanstack/react-table";

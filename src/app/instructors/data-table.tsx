@@ -22,13 +22,11 @@ import { useState } from "react";
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
-  user: boolean;
 }
 
-export function InstructorsTable<TData, TValue>({
+export function PublicInstructorsTable<TData, TValue>({
   columns,
   data,
-  user,
 }: DataTableProps<TData, TValue>) {
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 
@@ -59,8 +57,6 @@ export function InstructorsTable<TData, TValue>({
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
-                  if (header.id === "delete" && user == false) return null;
-
                   return (
                     <TableHead key={header.id}>
                       {header.isPlaceholder
@@ -83,9 +79,6 @@ export function InstructorsTable<TData, TValue>({
                   data-state={row.getIsSelected() && "selected"}
                 >
                   {row.getVisibleCells().map((cell) => {
-                    if (cell.column.id === "delete" && user == false)
-                      return null;
-
                     return (
                       <TableCell key={cell.id}>
                         {flexRender(

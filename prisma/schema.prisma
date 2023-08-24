@@ -110,6 +110,7 @@ enum LogType {
   UPGRADE
   TRANSFER
   SOLO
+  INSTRUCTOR
   HQ
 }
 

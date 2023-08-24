@@ -20,7 +20,7 @@ import {
 import { soloFormSchema } from "@/lib/form-schemas";
 import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { CalendarIcon } from "@radix-ui/react-icons";
+import { CalendarIcon, ReloadIcon } from "@radix-ui/react-icons";
 import { addDays, format } from "date-fns";
 import { useTransition } from "react";
 import { useForm } from "react-hook-form";
@@ -138,7 +138,13 @@ export const SoloForm = () => {
             )}
           />
         </div>
-        <Button type="submit">Submit</Button>
+        {isLoading ? (
+          <Button variant="ghost" disabled className="p-0">
+            <ReloadIcon className="h-4 w-4 text-white animate-spin" />
+          </Button>
+        ) : (
+          <Button type="submit">Submit</Button>
+        )}
       </form>
     </Form>
   );

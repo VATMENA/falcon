@@ -4,7 +4,7 @@ import { deleteSolo } from "@/app/dashboard/solos/action";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Solo } from "@prisma/client";
-import { Cross1Icon } from "@radix-ui/react-icons";
+import { Cross1Icon, ReloadIcon } from "@radix-ui/react-icons";
 import { ColumnDef } from "@tanstack/react-table";
 import { useTransition } from "react";
 
@@ -56,13 +56,17 @@ export const solosColumns: ColumnDef<Solo>[] = [
       // eslint-disable-next-line react-hooks/rules-of-hooks
       const [isLoading, startTransition] = useTransition();
 
-      return (
+      return !isLoading ? (
         <Button
           variant={"ghost"}
           className="h-8 w-8 p-0"
           onClick={() => startTransition(() => deleteSolo(row.original.cid))}
         >
           <Cross1Icon className="h-4 w-4 text-white" />
+        </Button>
+      ) : (
+        <Button variant={"ghost"} disabled className="h-8 w-8 p-0">
+          <ReloadIcon className="h-4 w-4 text-white animate-spin" />
         </Button>
       );
     },
