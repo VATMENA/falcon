@@ -5,15 +5,15 @@ import { prisma } from "@/lib/db/prisma";
 export const revalidate = 1;
 
 export default async function InstructorsPage() {
-  const divisionalInstructors = await prisma.instructor.findMany({
+  const seniorInstructors = await prisma.instructor.findMany({
     where: {
-      type: "DIVISIONAL",
+      type: "SENIOR",
     },
   });
 
-  const localInstructors = await prisma.instructor.findMany({
+  const instructors = await prisma.instructor.findMany({
     where: {
-      type: "LOCAL",
+      type: "INSTRUCTOR",
     },
   });
 
@@ -23,16 +23,16 @@ export default async function InstructorsPage() {
         <h1 className="text-3xl font-bold">VATMENA Instructors</h1>
       </div>
       <div className="flex flex-col gap-y-2">
-        <h1 className="text-xl font-bold">Divisional Instructors</h1>
+        <h1 className="text-xl font-bold">Senior Instructors</h1>
         <PublicInstructorsTable
-          data={divisionalInstructors}
+          data={seniorInstructors}
           columns={publicInstructorsColumns}
         />
       </div>
       <div className="flex flex-col gap-y-2">
         <h1 className="text-xl font-bold">Local Instructors</h1>
         <PublicInstructorsTable
-          data={localInstructors}
+          data={instructors}
           columns={publicInstructorsColumns}
         />
       </div>

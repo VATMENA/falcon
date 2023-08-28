@@ -16,32 +16,32 @@ import { getUserSession } from "@/utils/session";
 export default async function Instructors() {
   const session = await getUserSession();
 
-  const divisionalInstructors = await prisma.instructor.findMany({
+  const seniorInstructors = await prisma.instructor.findMany({
     where: {
-      type: "DIVISIONAL",
+      type: "SENIOR",
     },
   });
 
-  const localInstructors = await prisma.instructor.findMany({
+  const instructors = await prisma.instructor.findMany({
     where: {
-      type: "LOCAL",
+      type: "INSTRUCTOR",
     },
   });
 
   return (
     <div className="flex flex-col gap-y-4">
       <div className="flex flex-col gap-y-2">
-        <h1 className="text-3xl font-bold">Divisional Instructors</h1>
+        <h1 className="text-3xl font-bold">Senior Instructors</h1>
         <InstructorsTable
-          data={divisionalInstructors}
+          data={seniorInstructors}
           columns={instructorsColumns}
           user={session!.user.user}
         />
       </div>
       <div className="flex flex-col gap-y-2">
-        <h1 className="text-3xl font-bold">Local Instructors</h1>
+        <h1 className="text-3xl font-bold">Instructors</h1>
         <InstructorsTable
-          data={localInstructors}
+          data={instructors}
           columns={instructorsColumns}
           user={session!.user.user}
         />

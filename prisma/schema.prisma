@@ -115,6 +115,6 @@ enum LogType {
 }
 
 enum InstructorType {
-  LOCAL
-  DIVISIONAL
+  SENIOR
+  INSTRUCTOR
 }
