@@ -2,8 +2,8 @@
 import { auth } from "@/lib/auth/lucia";
 import {
   OAuthRequestError,
-  __experimental_validateOAuth2AuthorizationCode as getTokens,
   providerUserAuth,
+  validateOAuth2AuthorizationCode,
 } from "@lucia-auth/oauth";
 import { cookies } from "next/headers";
 
@@ -32,7 +32,7 @@ export const GET = async (request: NextRequest) => {
     });
   }
   try {
-    const tokens = await getTokens<AuthorizationResult>(
+    const tokens = await validateOAuth2AuthorizationCode<AuthorizationResult>(
       code,
       `${VATSIM_URL}/oauth/token`,
       {
@@ -52,13 +52,14 @@ export const GET = async (request: NextRequest) => {
     });
     const vatsimUser = (await response.json()) as VatsimUser;
 
-    const { existingUser, createUser } = await providerUserAuth(
+    const { getExistingUser, createUser } = await providerUserAuth(
       auth,
       "vatsim",
       vatsimUser.data.cid
     );
 
     const getUser = async () => {
+      const existingUser = await getExistingUser();
       if (existingUser) {
         // update user info
         const user = await auth.updateUserAttributes(existingUser.userId, {
