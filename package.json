@@ -1,17 +1,17 @@
 {
+  "name": "staff-monorepo",
   "private": true,
+  "packageManager": "pnpm@8.6.10",
   "scripts": {
     "build": "turbo run build",
-    "dev": "turbo run dev",
-    "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "dev": "turbo run dev --parallel",
+    "clean": "rm -rf node_modules",
+    "clean:workspaces": "turbo clean",
+    "db:push": "turbo db:push",
+    "db:generate": "turbo db:generate"
   },
-  "devDependencies": {
-    "eslint": "^8.47.0",
-    "prettier": "^3.0.2",
-    "tsconfig": "workspace:*",
+  "dependencies": {
+    "dotenv-cli": "^7.3.0",
     "turbo": "latest"
-  },
-  "packageManager": "pnpm@8.6.10",
-  "name": "staff-monorepo"
+  }
 }
