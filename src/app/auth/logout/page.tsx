@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect } from 'react'
+import "./logout.css"
 
 function Logout({ redirect }: { redirect?: string }) {
 
@@ -19,10 +20,12 @@ function Logout({ redirect }: { redirect?: string }) {
         return (() => {
             controller.abort();
         })
-    })
+    }, [])
 
     return (
-        <div className="flex flex-col justify-center w-screen h-screen text-center">Will logout...</div>
+        <div className="flex justify-center items-center w-screen h-screen">
+            <div className="loader"></div>
+        </div>
     )
 }
 
