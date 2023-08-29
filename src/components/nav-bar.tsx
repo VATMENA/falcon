@@ -21,7 +21,7 @@ export const NavBar = async () => {
       <div className="flex items-center gap-x-4 px-2">
         <div className="text-md">{session!.user.fullName}</div>
         <Button asChild>
-          <Link href={"/api/logout"}>Sign Out</Link>
+          <Link href={"/auth/logout"}>Sign Out</Link>
         </Button>
       </div>
     </div>
