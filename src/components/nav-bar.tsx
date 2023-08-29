@@ -1,5 +1,5 @@
+import { LogoutButton } from "@/components/logout-button";
 import { NavBarTabs } from "@/components/navbar-tabs";
-import { Button } from "@/components/ui/button";
 import { getUserSession } from "@/utils/session";
 import Image from "next/image";
 import Link from "next/link";
@@ -20,9 +20,7 @@ export const NavBar = async () => {
       </div>
       <div className="flex items-center gap-x-4 px-2">
         <div className="text-md">{session!.user.fullName}</div>
-        <Button asChild>
-          <Link href={"/auth/logout"}>Sign Out</Link>
-        </Button>
+        <LogoutButton />
       </div>
     </div>
   );

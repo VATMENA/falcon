@@ -4,7 +4,7 @@ import { cookies } from "next/headers";
 
 import type { NextRequest } from "next/server";
 
-export const POST = async (request: NextRequest) => {
+export const GET = async (request: NextRequest) => {
   const authRequest = auth.handleRequest({ request, cookies });
   // check if user is authenticated
   const session = await authRequest.validate();
