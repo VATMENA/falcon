@@ -1,8 +1,8 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { Solo } from "@prisma/client";
 import { ColumnDef } from "@tanstack/react-table";
+import { Solo } from "db";
 
 export const publicSolosColumns: ColumnDef<Solo>[] = [
   {

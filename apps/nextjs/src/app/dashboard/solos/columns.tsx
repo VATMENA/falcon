@@ -3,9 +3,9 @@
 import { deleteSolo } from "@/app/dashboard/solos/action";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Solo } from "@prisma/client";
 import { Cross1Icon, ReloadIcon } from "@radix-ui/react-icons";
 import { ColumnDef } from "@tanstack/react-table";
+import { Solo } from "db";
 import { useTransition } from "react";
 
 export const solosColumns: ColumnDef<Solo>[] = [

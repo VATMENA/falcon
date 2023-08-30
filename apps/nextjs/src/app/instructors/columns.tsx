@@ -1,7 +1,7 @@
 "use client";
 
-import { Instructor } from "@prisma/client";
 import { ColumnDef } from "@tanstack/react-table";
+import { Instructor } from "db";
 
 export const publicInstructorsColumns: ColumnDef<Instructor>[] = [
   {

@@ -1,8 +1,8 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { SoloRequest } from "@prisma/client";
 import { CheckIcon, Cross1Icon } from "@radix-ui/react-icons";
+import { SoloRequest } from "db";
 
 export const ApproveButton = ({
   approve,

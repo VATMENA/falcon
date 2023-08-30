@@ -2,9 +2,9 @@
 
 import { deleteInstructor } from "@/app/dashboard/instructors/action";
 import { Button } from "@/components/ui/button";
-import { Instructor } from "@prisma/client";
 import { Cross1Icon, ReloadIcon } from "@radix-ui/react-icons";
 import { ColumnDef } from "@tanstack/react-table";
+import { Instructor } from "db";
 import { useTransition } from "react";
 
 export const instructorsColumns: ColumnDef<Instructor>[] = [

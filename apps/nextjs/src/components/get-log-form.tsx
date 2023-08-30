@@ -8,7 +8,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Log } from "@prisma/client";
+import { Log } from "db";
 
 export const LogForm = ({ logs }: { logs: Log[] }) => {
   return (

@@ -1,8 +1,8 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { UpgradeRequest } from "@prisma/client";
 import { CheckIcon, Cross1Icon } from "@radix-ui/react-icons";
+import { UpgradeRequest } from "db";
 
 export const ApproveButton = ({
   approve,

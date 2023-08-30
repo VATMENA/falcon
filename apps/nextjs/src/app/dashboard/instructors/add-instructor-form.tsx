@@ -20,8 +20,8 @@ import {
 import { instructorFormSchema } from "@/lib/form-schemas";
 import { Subdivision } from "@/types/subdivisions";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { InstructorType } from "@prisma/client";
 import { DialogClose } from "@radix-ui/react-dialog";
+import { InstructorType } from "db";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 

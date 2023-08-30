@@ -1,5 +1,5 @@
 import { Subdivision } from "@/types/subdivisions";
-import { InstructorType } from "@prisma/client";
+import { InstructorType } from "db";
 import { z } from "zod";
 
 export const idFormSchema = z.object({
