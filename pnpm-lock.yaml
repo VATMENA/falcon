@@ -129,6 +129,9 @@ importers:
         specifier: ^3.21.4
         version: 3.21.4
     devDependencies:
+      '@prisma/nextjs-monorepo-workaround-plugin':
+        specifier: ^5.2.0
+        version: 5.2.0
       '@types/bcrypt':
         specifier: ^5.0.0
         version: 5.0.0
@@ -457,6 +460,10 @@ packages:
   /@prisma/engines@5.2.0:
     resolution: {integrity: sha512-dT7FOLUCdZmq+AunLqB1Iz+ZH/IIS1Fz2THmKZQ6aFONrQD/BQ5ecJ7g2wGS2OgyUFf4OaLam6/bxmgdOBDqig==}
     requiresBuild: true
+
+  /@prisma/nextjs-monorepo-workaround-plugin@5.2.0:
+    resolution: {integrity: sha512-HrbbIBKbOxFJlF6+RkzlWBy6vr90c45nn8IesH4Z5yqBNOFAqwVCh9nRSQcuViIGxZUvrolTMrVTICIfFpfqyw==}
+    dev: true
 
   /@radix-ui/number@1.0.1:
     resolution: {integrity: sha512-T5gIdVO2mmPW3NNhjNgEP3cqMXjXL9UbO0BzWcXfvdBs+BohbQxvd/K5hSVKmn9/lbTdsQVKbUcP5WLCwvUbBg==}

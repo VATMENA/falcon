@@ -50,6 +50,7 @@
     "zod": "^3.21.4"
   },
   "devDependencies": {
+    "@prisma/nextjs-monorepo-workaround-plugin": "^5.2.0",
     "@types/bcrypt": "^5.0.0"
   }
 }
