@@ -1,8 +1,14 @@
 "use client";
 
 import { addSoloRequest } from "@/app/dashboard/solos/action";
-import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
+import { soloFormSchema } from "@/lib/form-schemas";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { CalendarIcon, ReloadIcon } from "@radix-ui/react-icons";
+import { addDays, format } from "date-fns";
+import { useTransition } from "react";
+import { useForm } from "react-hook-form";
+import { Button } from "ui/components/button";
+import { Calendar } from "ui/components/calendar";
 import {
   Form,
   FormControl,
@@ -10,20 +16,10 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { soloFormSchema } from "@/lib/form-schemas";
-import { cn } from "@/lib/utils";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { CalendarIcon, ReloadIcon } from "@radix-ui/react-icons";
-import { addDays, format } from "date-fns";
-import { useTransition } from "react";
-import { useForm } from "react-hook-form";
+} from "ui/components/form";
+import { Input } from "ui/components/input";
+import { Popover, PopoverContent, PopoverTrigger } from "ui/components/popover";
+import { cn } from "ui/lib/utils";
 import { z } from "zod";
 
 export const SoloForm = () => {

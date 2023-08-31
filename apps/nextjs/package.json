@@ -51,6 +51,8 @@
   },
   "devDependencies": {
     "@prisma/nextjs-monorepo-workaround-plugin": "^5.2.0",
-    "@types/bcrypt": "^5.0.0"
+    "@types/bcrypt": "^5.0.0",
+    "tsconfig": "workspace:*",
+    "ui": "workspace:*"
   }
 }

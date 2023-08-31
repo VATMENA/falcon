@@ -1,6 +1,12 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { instructorFormSchema } from "@/lib/form-schemas";
+import { Subdivision } from "@/types/subdivisions";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { DialogClose } from "@radix-ui/react-dialog";
+import { InstructorType } from "db";
+import { useForm } from "react-hook-form";
+import { Button } from "ui/components/button";
 import {
   Form,
   FormControl,
@@ -8,21 +14,15 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
+} from "ui/components/form";
+import { Input } from "ui/components/input";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { instructorFormSchema } from "@/lib/form-schemas";
-import { Subdivision } from "@/types/subdivisions";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { DialogClose } from "@radix-ui/react-dialog";
-import { InstructorType } from "db";
-import { useForm } from "react-hook-form";
+} from "ui/components/select";
 import { z } from "zod";
 
 export const AddInstructorForm = ({

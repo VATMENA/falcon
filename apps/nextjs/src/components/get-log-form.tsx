@@ -1,5 +1,6 @@
 "use client";
 
+import { Log } from "db";
 import {
   Table,
   TableBody,
@@ -7,8 +8,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
-import { Log } from "db";
+} from "ui/components/table";
 
 export const LogForm = ({ logs }: { logs: Log[] }) => {
   return (

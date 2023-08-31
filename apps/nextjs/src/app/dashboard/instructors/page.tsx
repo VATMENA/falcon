@@ -2,16 +2,16 @@ import { addInstructor } from "@/app/dashboard/instructors/action";
 import { AddInstructorForm } from "@/app/dashboard/instructors/add-instructor-form";
 import { instructorsColumns } from "@/app/dashboard/instructors/columns";
 import { InstructorsTable } from "@/app/dashboard/instructors/data-table";
-import { Button } from "@/components/ui/button";
+import { getUserSession } from "@/utils/session";
+import { prisma } from "db";
+import { Button } from "ui/components/button";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
-import { getUserSession } from "@/utils/session";
-import { prisma } from "db";
+} from "ui/components/dialog";
 
 export default async function Instructors() {
   const session = await getUserSession();

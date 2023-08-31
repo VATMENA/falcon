@@ -1,6 +1,6 @@
 import { upgradeMember } from "@/app/dashboard/upgrade/action";
 import { ApproveButton, DenyButton } from "@/app/dashboard/upgrade/buttons";
-import UpgradeForm from "@/app/dashboard/upgrade/upgrade-form";
+import { UpgradeForm } from "@/app/dashboard/upgrade/upgrade-form";
 import { parseRating } from "@/utils/parse-rating";
 import { getUserSession } from "@/utils/session";
 import { UpgradeRequest, prisma } from "db";

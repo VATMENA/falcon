@@ -1,5 +1,6 @@
 "use client";
 
+import { DivisionMembersResponse, Subdivision } from "@/types/subdivisions";
 import {
   Table,
   TableBody,
@@ -7,8 +8,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
-import { DivisionMembersResponse, Subdivision } from "@/types/subdivisions";
+} from "ui/components/table";
 
 export const MembershipTable = ({
   members,

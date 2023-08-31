@@ -8,10 +8,10 @@ import {
   updateUpgrade,
   updateUserAccess,
 } from "@/app/dashboard/users/action";
-import { Switch } from "@/components/ui/switch";
 import { ColumnDef } from "@tanstack/react-table";
 import { User } from "db";
 import { useTransition } from "react";
+import { Switch } from "ui/components/switch";
 
 export const usersColumns: ColumnDef<User>[] = [
   {

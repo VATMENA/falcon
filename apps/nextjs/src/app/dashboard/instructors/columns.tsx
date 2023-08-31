@@ -1,11 +1,11 @@
 "use client";
 
 import { deleteInstructor } from "@/app/dashboard/instructors/action";
-import { Button } from "@/components/ui/button";
 import { Cross1Icon, ReloadIcon } from "@radix-ui/react-icons";
 import { ColumnDef } from "@tanstack/react-table";
 import { Instructor } from "db";
 import { useTransition } from "react";
+import { Button } from "ui/components/button";
 
 export const instructorsColumns: ColumnDef<Instructor>[] = [
   {

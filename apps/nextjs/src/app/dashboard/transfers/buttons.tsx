@@ -1,8 +1,8 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { CheckIcon, Cross1Icon } from "@radix-ui/react-icons";
 import { TransferRequest } from "db";
+import { Button } from "ui/components/button";
 
 export const ApproveButton = ({
   approve,

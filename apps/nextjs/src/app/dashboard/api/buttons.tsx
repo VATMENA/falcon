@@ -1,7 +1,7 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { Cross1Icon } from "@radix-ui/react-icons";
+import { Button } from "ui/components/button";
 
 export const AddButton = ({ addKey }: { addKey: () => Promise<void> }) => {
   return <Button onClick={async () => await addKey()}>Generate API Key</Button>;

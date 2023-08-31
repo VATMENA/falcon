@@ -1,6 +1,12 @@
 "use client";
 import { createUpgradeRequest } from "@/app/dashboard/upgrade/action";
-import { Button } from "@/components/ui/button";
+import { idFormSchema, ratingFormSchema } from "@/lib/form-schemas";
+import { VatsimMemberResponse } from "@/lib/vatsim/member";
+import { parseRating } from "@/utils/parse-rating";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useState, useTransition } from "react";
+import { useForm } from "react-hook-form";
+import { Button } from "ui/components/button";
 import {
   Dialog,
   DialogContent,
@@ -9,7 +15,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
+} from "ui/components/dialog";
 import {
   Form,
   FormControl,
@@ -17,25 +23,19 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
+} from "ui/components/form";
+import { Input } from "ui/components/input";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { useToast } from "@/components/ui/use-toast";
-import { idFormSchema, ratingFormSchema } from "@/lib/form-schemas";
-import { VatsimMemberResponse } from "@/lib/vatsim/member";
-import { parseRating } from "@/utils/parse-rating";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useState, useTransition } from "react";
-import { useForm } from "react-hook-form";
+} from "ui/components/select";
+import { useToast } from "ui/components/use-toast";
 import { z } from "zod";
 
-export default function UpgradeForm() {
+export const UpgradeForm = () => {
   let [isPending, startTransition] = useTransition();
 
   const [open, setOpen] = useState(false);
@@ -191,4 +191,4 @@ export default function UpgradeForm() {
       ) : null}
     </div>
   );
-}
+};

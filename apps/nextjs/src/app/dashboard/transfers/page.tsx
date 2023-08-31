@@ -1,6 +1,6 @@
 import { transferMember } from "@/app/dashboard/transfers/action";
 import { ApproveButton, DenyButton } from "@/app/dashboard/transfers/buttons";
-import TransfersForm from "@/app/dashboard/transfers/transfers-form";
+import { TransfersForm } from "@/app/dashboard/transfers/transfers-form";
 import { getUserSession } from "@/utils/session";
 import { TransferRequest, prisma } from "db";
 import { revalidatePath } from "next/cache";

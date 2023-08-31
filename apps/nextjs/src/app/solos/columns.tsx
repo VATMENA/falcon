@@ -1,8 +1,8 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import { ColumnDef } from "@tanstack/react-table";
 import { Solo } from "db";
+import { cn } from "ui/lib/utils";
 
 export const publicSolosColumns: ColumnDef<Solo>[] = [
   {

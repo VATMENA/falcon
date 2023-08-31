@@ -1,9 +1,9 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { User } from "lucia";
 import Link from "next/link";
 import { useSelectedLayoutSegment } from "next/navigation";
+import { Button } from "ui/components/button";
 
 export const NavBarTabs = ({ user }: { user: User }) => {
   const segment = useSelectedLayoutSegment();
