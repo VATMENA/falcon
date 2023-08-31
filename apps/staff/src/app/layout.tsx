@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import { Toaster } from "ui/components/toaster";
 import "ui/styles/globals.css";
@@ -17,6 +18,7 @@ export default async function RootLayout({
       <body className="overscroll-none">
         <div className="flex h-full w-full grow flex-col">{children}</div>
         <Toaster />
+        <Analytics />
       </body>
     </html>
   );
