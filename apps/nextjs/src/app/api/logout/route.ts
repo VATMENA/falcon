@@ -1,5 +1,5 @@
 // app/api/logout/route.ts
-import { auth } from "@/lib/auth/lucia";
+import { auth } from "auth";
 import { cookies } from "next/headers";
 
 import type { NextRequest } from "next/server";

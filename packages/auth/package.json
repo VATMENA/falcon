@@ -1,0 +1,19 @@
+{
+  "name": "auth",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "echo 'Add dev script here'",
+    "build": "echo 'Add build script here'",
+    "test": "echo 'Add test script here'",
+    "lint": "echo 'Add lint script here'"
+  },
+  "devDependencies": {
+    "db": "workspace:*",
+    "tsconfig": "workspace:*"
+  },
+  "dependencies": {
+    "@lucia-auth/adapter-prisma": "^3.0.0",
+    "lucia": "^2.0.0"
+  }
+}

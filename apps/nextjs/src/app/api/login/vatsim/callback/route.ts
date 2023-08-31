@@ -1,10 +1,10 @@
 // app/login/github/callback/route.ts
-import { auth } from "@/lib/auth/lucia";
 import {
   OAuthRequestError,
   providerUserAuth,
   validateOAuth2AuthorizationCode,
 } from "@lucia-auth/oauth";
+import { auth } from "auth";
 import { cookies } from "next/headers";
 
 import { VATSIM_URL } from "@/constants";
