@@ -2,8 +2,8 @@
   "eslint.workingDirectories": [
     { "pattern": "apps/*/" },
     { "pattern": "packages/*/" }
-  ],
-  "files.exclude": {
-    "**/node_modules": true
-  }
+  ]
+  // "files.exclude": {
+  //   "**/node_modules": true
+  // }
 }

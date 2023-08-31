@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Toaster } from "ui/components/toaster";
-import "./globals.css";
+import "ui/styles/globals.css";
 
 export const metadata: Metadata = {
   title: "VATMENA Staff HQ",

@@ -147,6 +147,9 @@ importers:
       '@prisma/client':
         specifier: ^5.2.0
         version: 5.2.0(prisma@5.2.0)
+      tsconfig:
+        specifier: workspace:^
+        version: link:../tsconfig
     devDependencies:
       prisma:
         specifier: ^5.2.0
