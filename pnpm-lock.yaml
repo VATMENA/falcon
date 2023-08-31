@@ -15,7 +15,7 @@ importers:
         specifier: latest
         version: 1.10.13
 
-  apps/nextjs:
+  apps/staff:
     dependencies:
       '@hookform/resolvers':
         specifier: ^3.1.1
