@@ -151,7 +151,7 @@ export const TransfersForm = ({ user }: { user: User }) => {
             {member.subdivision_id !== null && (
               <div className="text-red-500">
                 You are already assigned to a subdivision. Please contact the
-                membership department
+                membership department if you wish to change your subdivision.
               </div>
             )}
           </form>
