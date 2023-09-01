@@ -8,14 +8,21 @@ export const NavBar = async () => {
   const session = await getUserSession();
 
   return (
-    <div className="flex w-full items-center justify-between p-2">
+    <div className="flex w-full items-center justify-between p-4 px-8">
       <div className="flex items-center gap-x-2">
-        <Link
-          href="/dashboard"
-          className="flex items-baseline relative h-20 w-20"
-        >
-          <Image src={"/images/MainWhite.png"} alt="VATMENA Logo" fill />
-        </Link>
+        <div className="flex flex-col items-center pr-2">
+          <Link
+            href="/dashboard"
+            className="flex items-baseline relative h-12 w-12"
+          >
+            <Image
+              src={"/images/MainWhiteCropped.png"}
+              alt="VATMENA Logo"
+              fill
+            />
+          </Link>
+          <div className="text-white font-bold text-xs select-none">Staff</div>
+        </div>
         <NavBarTabs user={session!.user} />
       </div>
       <div className="flex items-center gap-x-4 px-2">
