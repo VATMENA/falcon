@@ -11,6 +11,10 @@ importers:
       turbo:
         specifier: latest
         version: 1.10.13
+    devDependencies:
+      dotenv-cli:
+        specifier: ^7.3.0
+        version: 7.3.0
 
   apps/members:
     dependencies:
@@ -71,10 +75,6 @@ importers:
       ui:
         specifier: workspace:^
         version: link:../../packages/ui
-    devDependencies:
-      dotenv-cli:
-        specifier: ^7.3.0
-        version: 7.3.0
 
   apps/staff:
     dependencies:
@@ -210,9 +210,6 @@ importers:
         specifier: workspace:^
         version: link:../tsconfig
     devDependencies:
-      dotenv-cli:
-        specifier: ^7.3.0
-        version: 7.3.0
       prisma:
         specifier: ^5.2.0
         version: 5.2.0

@@ -29,8 +29,5 @@
     "tsconfig": "workspace:^",
     "typescript": "5.1.6",
     "ui": "workspace:^"
-  },
-  "devDependencies": {
-    "dotenv-cli": "^7.3.0"
   }
 }
