@@ -18,6 +18,9 @@ importers:
 
   apps/members:
     dependencies:
+      '@hookform/resolvers':
+        specifier: ^3.1.1
+        version: 3.1.1(react-hook-form@7.45.2)
       '@lucia-auth/oauth':
         specifier: ^3.0.0
         version: 3.0.0(lucia@2.0.0)
@@ -63,6 +66,9 @@ importers:
       react-dom:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
+      react-hook-form:
+        specifier: ^7.45.2
+        version: 7.45.2(react@18.2.0)
       tailwindcss:
         specifier: 3.3.3
         version: 3.3.3
@@ -75,6 +81,9 @@ importers:
       ui:
         specifier: workspace:^
         version: link:../../packages/ui
+      zod:
+        specifier: ^3.21.4
+        version: 3.21.4
 
   apps/staff:
     dependencies:
@@ -210,6 +219,9 @@ importers:
         specifier: workspace:^
         version: link:../tsconfig
     devDependencies:
+      '@types/node':
+        specifier: 20.4.5
+        version: 20.4.5
       prisma:
         specifier: ^5.2.0
         version: 5.2.0

@@ -10,6 +10,7 @@
     "dev": "pnpm with-env prisma studio"
   },
   "devDependencies": {
+    "@types/node": "20.4.5",
     "prisma": "^5.2.0",
     "typescript": "5.1.6"
   },

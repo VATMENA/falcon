@@ -1,5 +1,6 @@
 import { LogoutButton } from "@/components/logout-button";
 import { NavBarTabs } from "@/components/navbar-tabs";
+import { StaffButton } from "@/components/staff-button";
 import { getUserSession } from "@/utils/session";
 import Image from "next/image";
 import Link from "next/link";
@@ -30,6 +31,7 @@ export const NavBar = async () => {
       <div className="flex items-center gap-x-4 px-2">
         <div className="text-md">{session!.user.fullName}</div>
         <LogoutButton />
+        {session!.user.access && <StaffButton />}
       </div>
     </div>
   );

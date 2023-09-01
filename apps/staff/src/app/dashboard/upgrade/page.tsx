@@ -5,6 +5,13 @@ import { parseRating } from "@/utils/parse-rating";
 import { getUserSession } from "@/utils/session";
 import { UpgradeRequest, prisma } from "db";
 import { revalidatePath } from "next/cache";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "ui/components/ui/card";
 
 export default async function UpgradePage() {
   const session = await getUserSession();
@@ -41,7 +48,15 @@ export default async function UpgradePage() {
     <div className="flex flex-col gap-y-4">
       <div className="flex flex-col gap-y-2">
         <div className="text-3xl font-bold">Upgrade</div>
-        <UpgradeForm />
+        <Card className="w-80">
+          <CardHeader>
+            <CardTitle>Upgrade Request Form</CardTitle>
+            <CardDescription>Make an upgrade request</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <UpgradeForm />
+          </CardContent>
+        </Card>
       </div>
       <div className="flex flex-col gap-y-2">
         <div className="text-xl font-bold">Upgrade Requests</div>

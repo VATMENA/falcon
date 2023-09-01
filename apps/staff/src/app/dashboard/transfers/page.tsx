@@ -4,6 +4,13 @@ import { TransfersForm } from "@/app/dashboard/transfers/transfers-form";
 import { getUserSession } from "@/utils/session";
 import { TransferRequest, prisma } from "db";
 import { revalidatePath } from "next/cache";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "ui/components/ui/card";
 
 export default async function TransfersPage() {
   const session = await getUserSession();
@@ -40,7 +47,15 @@ export default async function TransfersPage() {
     <div className="flex flex-col gap-y-4">
       <div className="flex flex-col gap-y-2">
         <div className="text-3xl font-bold">Transfers</div>
-        <TransfersForm />
+        <Card className="w-80">
+          <CardHeader>
+            <CardTitle>Transfer Request Form</CardTitle>
+            <CardDescription>Make a transfer request</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <TransfersForm />
+          </CardContent>
+        </Card>
       </div>
       <div className="flex flex-col gap-y-2">
         <div className="text-xl font-bold">Transfer Requests</div>

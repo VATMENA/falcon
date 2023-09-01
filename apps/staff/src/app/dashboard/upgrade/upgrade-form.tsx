@@ -59,7 +59,7 @@ export const UpgradeForm = () => {
   }
 
   return (
-    <div className="flex flex-col gap-y-6 w-2/3">
+    <div className="flex flex-col gap-y-6">
       <Form {...idForm}>
         <form
           onSubmit={idForm.handleSubmit(idFormSubmit)}
