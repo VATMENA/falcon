@@ -5,7 +5,7 @@ import { Cross1Icon, ReloadIcon } from "@radix-ui/react-icons";
 import { ColumnDef } from "@tanstack/react-table";
 import { Solo } from "db";
 import { useTransition } from "react";
-import { Button } from "ui/components/button";
+import { Button } from "ui/components/ui/button";
 import { cn } from "ui/lib/utils";
 
 export const solosColumns: ColumnDef<Solo>[] = [

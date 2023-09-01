@@ -1,6 +1,6 @@
 import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
-import { Toaster } from "ui/components/toaster";
+import { Toaster } from "ui/components/ui/toaster";
 import "ui/styles/globals.css";
 
 export const metadata: Metadata = {

@@ -3,7 +3,7 @@
 import { User } from "lucia";
 import Link from "next/link";
 import { useSelectedLayoutSegment } from "next/navigation";
-import { Button } from "ui/components/button";
+import { Button } from "ui/components/ui/button";
 
 export const NavBarTabs = ({ user }: { user: User }) => {
   const segment = useSelectedLayoutSegment();

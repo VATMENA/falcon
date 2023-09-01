@@ -5,7 +5,7 @@ import { Cross1Icon, ReloadIcon } from "@radix-ui/react-icons";
 import { ColumnDef } from "@tanstack/react-table";
 import { Instructor } from "db";
 import { useTransition } from "react";
-import { Button } from "ui/components/button";
+import { Button } from "ui/components/ui/button";
 
 export const instructorsColumns: ColumnDef<Instructor>[] = [
   {

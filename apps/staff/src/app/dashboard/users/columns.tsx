@@ -11,7 +11,7 @@ import {
 import { ColumnDef } from "@tanstack/react-table";
 import { User } from "db";
 import { useTransition } from "react";
-import { Switch } from "ui/components/switch";
+import { Switch } from "ui/components/ui/switch";
 
 export const usersColumns: ColumnDef<User>[] = [
   {

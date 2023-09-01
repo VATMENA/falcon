@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { DialogClose } from "@radix-ui/react-dialog";
 import { InstructorType } from "db";
 import { useForm } from "react-hook-form";
-import { Button } from "ui/components/button";
+import { Button } from "ui/components/ui/button";
 import {
   Form,
   FormControl,
@@ -14,15 +14,15 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "ui/components/form";
-import { Input } from "ui/components/input";
+} from "ui/components/ui/form";
+import { Input } from "ui/components/ui/input";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "ui/components/select";
+} from "ui/components/ui/select";
 import { z } from "zod";
 
 export const AddInstructorForm = ({

@@ -2,7 +2,7 @@ import { getUserSession } from "@/utils/session";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { Button } from "ui/components/button";
+import { Button } from "ui/components/ui/button";
 
 export default async function Home() {
   const session = await getUserSession();

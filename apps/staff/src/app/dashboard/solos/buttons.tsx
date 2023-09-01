@@ -2,7 +2,7 @@
 
 import { CheckIcon, Cross1Icon } from "@radix-ui/react-icons";
 import { SoloRequest } from "db";
-import { Button } from "ui/components/button";
+import { Button } from "ui/components/ui/button";
 
 export const ApproveButton = ({
   approve,

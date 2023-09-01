@@ -7,7 +7,7 @@ import { Subdivision } from "@/types/subdivisions";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
-import { Button } from "ui/components/button";
+import { Button } from "ui/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -16,7 +16,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "ui/components/dialog";
+} from "ui/components/ui/dialog";
 import {
   Form,
   FormControl,
@@ -24,16 +24,16 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "ui/components/form";
-import { Input } from "ui/components/input";
+} from "ui/components/ui/form";
+import { Input } from "ui/components/ui/input";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "ui/components/select";
-import { toast } from "ui/components/use-toast";
+} from "ui/components/ui/select";
+import { toast } from "ui/components/ui/use-toast";
 import { z } from "zod";
 
 export const TransfersForm = () => {

@@ -7,8 +7,8 @@ import { CalendarIcon, ReloadIcon } from "@radix-ui/react-icons";
 import { addDays, format } from "date-fns";
 import { useTransition } from "react";
 import { useForm } from "react-hook-form";
-import { Button } from "ui/components/button";
-import { Calendar } from "ui/components/calendar";
+import { Button } from "ui/components/ui/button";
+import { Calendar } from "ui/components/ui/calendar";
 import {
   Form,
   FormControl,
@@ -16,9 +16,13 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "ui/components/form";
-import { Input } from "ui/components/input";
-import { Popover, PopoverContent, PopoverTrigger } from "ui/components/popover";
+} from "ui/components/ui/form";
+import { Input } from "ui/components/ui/input";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "ui/components/ui/popover";
 import { cn } from "ui/lib/utils";
 import { z } from "zod";
 

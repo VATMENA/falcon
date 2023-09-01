@@ -8,7 +8,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "ui/components/table";
+} from "ui/components/ui/table";
 
 export const LogForm = ({ logs }: { logs: Log[] }) => {
   return (

@@ -4,14 +4,14 @@ import { instructorsColumns } from "@/app/dashboard/instructors/columns";
 import { InstructorsTable } from "@/app/dashboard/instructors/data-table";
 import { getUserSession } from "@/utils/session";
 import { prisma } from "db";
-import { Button } from "ui/components/button";
+import { Button } from "ui/components/ui/button";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "ui/components/dialog";
+} from "ui/components/ui/dialog";
 
 export default async function Instructors() {
   const session = await getUserSession();
