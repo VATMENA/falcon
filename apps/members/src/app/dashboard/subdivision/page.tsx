@@ -13,11 +13,11 @@ export default async function SubdivisionPage() {
 
   return (
     <div className="flex flex-col gap-y-2">
-      <div className="text-3xl font-bold">Transfers</div>
+      <div className="text-3xl font-bold">Subdivision Assignment</div>
       <Card className="w-80">
         <CardHeader>
-          <CardTitle>Transfer Request Form</CardTitle>
-          <CardDescription>Make a transfer request</CardDescription>
+          <CardTitle>vACC Assignment Form</CardTitle>
+          <CardDescription>Assign your subdivision in VATMENA</CardDescription>
         </CardHeader>
         <CardContent>
           <TransfersForm user={session!.user} />
