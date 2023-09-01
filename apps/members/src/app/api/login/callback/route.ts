@@ -36,11 +36,11 @@ export const GET = async (request: NextRequest) => {
       code,
       `${VATSIM_URL}/oauth/token`,
       {
-        clientId: process.env.VATSIM_CLIENT_ID!,
-        redirectUri: process.env.VATSIM_REDIRECT_URI!,
+        clientId: process.env.MEMBERS_CLIENT_ID!,
+        redirectUri: process.env.MEMBERS_REDIRECT_URI!,
         clientPassword: {
           authenticateWith: "client_secret",
-          clientSecret: process.env.VATSIM_CLIENT_SECRET!,
+          clientSecret: process.env.MEMBERS_CLIENT_SECRET!,
         },
       }
     );

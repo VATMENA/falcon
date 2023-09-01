@@ -9,8 +9,8 @@ export const GET = async (request: NextRequest) => {
   const [url, state] = await createOAuth2AuthorizationUrl(
     `${VATSIM_URL}/oauth/authorize`,
     {
-      clientId: process.env.VATSIM_CLIENT_ID!,
-      redirectUri: process.env.VATSIM_REDIRECT_URI!,
+      clientId: process.env.MEMBERS_CLIENT_ID!,
+      redirectUri: process.env.MEMBERS_REDIRECT_URI!,
       scope: ["full_name vatsim_details email"],
     }
   );
