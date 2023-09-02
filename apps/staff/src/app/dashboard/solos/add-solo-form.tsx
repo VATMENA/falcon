@@ -39,7 +39,7 @@ export const SoloForm = () => {
         onSubmit={form.handleSubmit((data) =>
           startTransition(() => addSoloRequest(data))
         )}
-        className=" w-[800px]"
+        className=""
       >
         <div className="grid gap-4 py-4 grid-cols-2">
           <FormField
