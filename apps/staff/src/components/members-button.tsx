@@ -16,6 +16,7 @@ export const MembersButton = () => {
         )
       }
       variant={"secondary"}
+      className="hidden min-[1100px]:flex"
     >
       Members HQ
     </Button>

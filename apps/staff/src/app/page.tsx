@@ -14,7 +14,9 @@ export default async function Home() {
         <div className="flex items-baseline relative h-72 w-72">
           <Image src={"/images/MainWhiteCropped.png"} alt="VATMENA Logo" fill />
         </div>
-        <div className="text-white font-bold text-5xl">VATMENA Staff HQ</div>
+        <div className="text-white font-bold text-3xl sm:text-5xl">
+          VATMENA Staff HQ
+        </div>
         <Button asChild>
           <Link href={"/api/login/vatsim"}>Sign In</Link>
         </Button>

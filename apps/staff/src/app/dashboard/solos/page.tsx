@@ -6,13 +6,14 @@ import { SolosTable } from "@/app/dashboard/solos/data-table";
 import { getUserSession } from "@/utils/session";
 import { SoloRequest, prisma } from "db";
 import { revalidatePath, unstable_cache } from "next/cache";
+import { Button } from "ui/components/ui/button";
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "ui/components/ui/card";
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "ui/components/ui/dialog";
 
 export default async function SolosPage() {
   const session = await getUserSession();
@@ -90,15 +91,17 @@ export default async function SolosPage() {
       </div>
       <div className="flex flex-col gap-y-4">
         <h1 className="text-3xl font-bold">Add Solo Validation</h1>
-        <Card className="w-[800px]">
-          <CardHeader>
-            <CardTitle>Solo Request Form</CardTitle>
-            <CardDescription>Make a solo request</CardDescription>
-          </CardHeader>
-          <CardContent>
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button>Add</Button>
+          </DialogTrigger>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Add New Instructor...</DialogTitle>
+            </DialogHeader>
             <SoloForm />
-          </CardContent>
-        </Card>
+          </DialogContent>
+        </Dialog>
       </div>
     </div>
   );
