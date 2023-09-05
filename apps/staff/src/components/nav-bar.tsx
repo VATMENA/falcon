@@ -1,5 +1,6 @@
 import { LogoutButton } from "@/components/logout-button";
 import { MembersButton } from "@/components/members-button";
+import { MobileNav } from "@/components/mobile-nav";
 import { NavBarTabs } from "@/components/navbar-tabs";
 import { getUserSession } from "@/utils/session";
 import Image from "next/image";
@@ -24,7 +25,10 @@ export const NavBar = async () => {
           </Link>
           <div className="text-white font-bold text-xs select-none">Staff</div>
         </div>
-        <NavBarTabs user={session!.user} />
+        <div className="hidden min-[1100px]:flex">
+          <NavBarTabs user={session!.user} />
+        </div>
+        <MobileNav user={session!.user} />
       </div>
       <div className="flex items-center gap-x-4 px-2">
         <div className="text-md">{session!.user.fullName}</div>
