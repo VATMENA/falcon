@@ -14,7 +14,7 @@ export const NavBarTabs = ({ user }: { user: User }) => {
         <Button
           asChild
           variant={segment === "users" ? "secondary" : "ghost"}
-          className="text-lg p-0 "
+          className="text-lg"
         >
           <Link href={"/dashboard/users"}>Users</Link>
         </Button>
