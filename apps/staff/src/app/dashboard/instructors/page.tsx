@@ -3,6 +3,7 @@ import { AddInstructorForm } from "@/app/dashboard/instructors/add-instructor-fo
 import { instructorsColumns } from "@/app/dashboard/instructors/columns";
 import { InstructorsTable } from "@/app/dashboard/instructors/data-table";
 import { getUserSession } from "@/utils/session";
+import { PlusIcon } from "@radix-ui/react-icons";
 import { prisma } from "db";
 import { Button } from "ui/components/ui/button";
 import {
@@ -48,7 +49,10 @@ export default async function Instructors() {
       </div>
       <Dialog>
         <DialogTrigger asChild>
-          <Button>Add</Button>
+          <Button>
+            <PlusIcon className="h-8 w-8 pr-2" />
+            Add
+          </Button>
         </DialogTrigger>
         <DialogContent>
           <DialogHeader>

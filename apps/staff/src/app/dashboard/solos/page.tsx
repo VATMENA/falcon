@@ -4,6 +4,7 @@ import { ApproveButton, DenyButton } from "@/app/dashboard/solos/buttons";
 import { solosColumns } from "@/app/dashboard/solos/columns";
 import { SolosTable } from "@/app/dashboard/solos/data-table";
 import { getUserSession } from "@/utils/session";
+import { PlusIcon } from "@radix-ui/react-icons";
 import { SoloRequest, prisma } from "db";
 import { revalidatePath, unstable_cache } from "next/cache";
 import { Button } from "ui/components/ui/button";
@@ -90,14 +91,17 @@ export default async function SolosPage() {
         )}
       </div>
       <div className="flex flex-col gap-y-4">
-        <h1 className="text-3xl font-bold">Add Solo Validation</h1>
+        <h1 className="text-3xl font-bold">Request Solo Validation</h1>
         <Dialog>
           <DialogTrigger asChild>
-            <Button>Add</Button>
+            <Button>
+              <PlusIcon className="h-8 w-8 pr-2" />
+              Add
+            </Button>
           </DialogTrigger>
           <DialogContent>
             <DialogHeader>
-              <DialogTitle>Add New Instructor...</DialogTitle>
+              <DialogTitle>Request Solo Validation...</DialogTitle>
             </DialogHeader>
             <SoloForm />
           </DialogContent>

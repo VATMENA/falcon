@@ -10,7 +10,7 @@ export const NavBar = async () => {
   const session = await getUserSession();
 
   return (
-    <div className="flex w-full items-center justify-between p-4 px-8">
+    <div className="flex w-full items-center justify-between p-2 px-8 border-b">
       <div className="flex items-center gap-x-2">
         <div className="flex flex-col items-center pr-2">
           <Link
@@ -25,7 +25,7 @@ export const NavBar = async () => {
           </Link>
           <div className="text-white font-bold text-xs select-none">Staff</div>
         </div>
-        <div className="hidden min-[1100px]:flex">
+        <div className="hidden min-[1100px]:flex gap-x-1">
           <NavBarTabs user={session!.user} />
         </div>
         <MobileNav user={session!.user} />

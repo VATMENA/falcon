@@ -46,8 +46,8 @@ export default async function UpgradePage() {
 
   return (
     <div className="flex flex-col gap-y-4">
-      <div className="flex flex-col gap-y-2">
-        <div className="text-3xl font-bold">Upgrade</div>
+      <div className="flex flex-col gap-y-4">
+        <div className="sm:text-5xl text-3xl font-bold">Upgrade</div>
         <Card className="w-80">
           <CardHeader>
             <CardTitle>Upgrade Request Form</CardTitle>

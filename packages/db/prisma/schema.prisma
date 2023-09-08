@@ -55,6 +55,7 @@ model Solo {
   position   String
   expiry     DateTime
   instructor String
+  count      Int      @default(1)
 }
 
 model Log {
@@ -90,6 +91,7 @@ model SoloRequest {
   expiry     DateTime
   instructor String
   created_at DateTime @default(now())
+  count      Int      @default(1)
 }
 
 model Instructor {
@@ -106,12 +108,24 @@ model ApiKey {
   key String @unique
 }
 
+model Examination {
+  id         String   @id @unique @default(uuid())
+  cid        String   @unique
+  full_name  String
+  position   String
+  exam_date  DateTime
+  instructor String
+  approved   Boolean?
+  created_at DateTime @default(now())
+}
+
 enum LogType {
   UPGRADE
   TRANSFER
   SOLO
   INSTRUCTOR
   HQ
+  EXAM
 }
 
 enum InstructorType {

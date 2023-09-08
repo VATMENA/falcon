@@ -58,6 +58,13 @@ export const NavBarTabs = ({ user }: { user: User }) => {
       </Button>
       <Button
         asChild
+        variant={segment === "examinations" ? "secondary" : "ghost"}
+        className="text-lg"
+      >
+        <Link href={"/dashboard/examinations"}>CPTs</Link>
+      </Button>
+      <Button
+        asChild
         variant={segment === "api" ? "secondary" : "ghost"}
         className="text-lg"
       >

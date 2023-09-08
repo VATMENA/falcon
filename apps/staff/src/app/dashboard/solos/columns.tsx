@@ -27,14 +27,14 @@ export const solosColumns: ColumnDef<Solo>[] = [
     cell: ({ row }) => {
       const formatted = new Date(row.original.expiry).toDateString();
       const daysLeft = Math.round(
-        Math.abs(new Date(row.original.expiry).getTime() - Date.now()) /
+        (new Date(row.original.expiry).getTime() - Date.now()) /
           (1000 * 60 * 60 * 24)
       );
       return (
         <div
           className={cn(
             "font-medium",
-            daysLeft < 3
+            daysLeft < 3 && daysLeft > 0
               ? "text-yellow-400"
               : daysLeft < 0
               ? "text-red-500"
@@ -49,6 +49,10 @@ export const solosColumns: ColumnDef<Solo>[] = [
   {
     accessorKey: "instructor",
     header: "Instructor",
+  },
+  {
+    accessorKey: "count",
+    header: "Solo Count",
   },
   {
     id: "delete",

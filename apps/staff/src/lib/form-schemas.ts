@@ -30,6 +30,24 @@ export const soloFormSchema = z.object({
   }),
   expiry: z.date(),
   instructor: z.string(),
+  count: z.coerce.number().min(1).max(3, {
+    message: "You can only issue a solo 3 times for one member.",
+  }),
+});
+
+export const examFormSchema = z.object({
+  cid: z.string().length(7, {
+    message: "CID must be 7 characters long.",
+  }),
+  full_name: z.string(),
+  position: z.string().length(8, {
+    message: "Please only use the absolute callsign. (For e.g OMDB_TWR)",
+  }),
+  exam_date: z.date(),
+  time: z.string().regex(new RegExp(/^(0[0-9]|1[0-9]|2[0-3])[0-5][0-9]z$/), {
+    message: "Please follow the format HHMMz.",
+  }),
+  instructor: z.string(),
 });
 
 export const instructorFormSchema = z.object({

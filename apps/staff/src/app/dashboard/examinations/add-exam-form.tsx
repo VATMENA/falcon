@@ -1,8 +1,9 @@
 "use client";
 
-import { addSoloRequest } from "@/app/dashboard/solos/action";
-import { soloFormSchema } from "@/lib/form-schemas";
+import { addExam } from "@/app/dashboard/examinations/action";
+import { examFormSchema } from "@/lib/form-schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { DialogClose } from "@radix-ui/react-dialog";
 import { CalendarIcon, ReloadIcon } from "@radix-ui/react-icons";
 import { addDays, format } from "date-fns";
 import { useTransition } from "react";
@@ -26,18 +27,18 @@ import {
 import { cn } from "ui/lib/utils";
 import { z } from "zod";
 
-export const SoloForm = () => {
+export const ExamForm = () => {
   let [isLoading, startTransition] = useTransition();
 
-  const form = useForm<z.infer<typeof soloFormSchema>>({
-    resolver: zodResolver(soloFormSchema),
+  const form = useForm<z.infer<typeof examFormSchema>>({
+    resolver: zodResolver(examFormSchema),
   });
 
   return (
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit((data) =>
-          startTransition(() => addSoloRequest(data))
+          startTransition(() => addExam(data))
         )}
         className=""
       >
@@ -83,10 +84,10 @@ export const SoloForm = () => {
           />
           <FormField
             control={form.control}
-            name="expiry"
+            name="exam_date"
             render={({ field }) => (
               <FormItem className="flex flex-col">
-                <FormLabel>Expiry</FormLabel>
+                <FormLabel>Exam Date</FormLabel>
                 <FormControl>
                   <Popover>
                     <PopoverTrigger asChild>
@@ -113,12 +114,25 @@ export const SoloForm = () => {
                         selected={field.value}
                         onSelect={field.onChange}
                         disabled={(date: Date) =>
-                          date < new Date() || date > addDays(new Date(), 30)
+                          date < addDays(new Date(), 14)
                         }
                         initialFocus
                       />
                     </PopoverContent>
                   </Popover>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="time"
+            render={({ field }) => (
+              <FormItem className="flex flex-col">
+                <FormLabel>Exam Time (HHMMz)</FormLabel>
+                <FormControl>
+                  <Input placeholder="Exam Time (zulu)..." {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -137,26 +151,15 @@ export const SoloForm = () => {
               </FormItem>
             )}
           />
-          <FormField
-            control={form.control}
-            name="count"
-            render={({ field }) => (
-              <FormItem className="flex flex-col">
-                <FormLabel>Solo Count</FormLabel>
-                <FormControl>
-                  <Input type="number" defaultValue={1} {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
         </div>
         {isLoading ? (
           <Button variant="ghost" disabled className="p-0">
             <ReloadIcon className="h-4 w-4 text-white animate-spin" />
           </Button>
         ) : (
-          <Button type="submit">Submit</Button>
+          <DialogClose asChild>
+            <Button type="submit">Submit</Button>
+          </DialogClose>
         )}
       </form>
     </Form>
