@@ -6,7 +6,7 @@ import { SolosTable } from "@/app/dashboard/solos/data-table";
 import { getUserSession } from "@/utils/session";
 import { PlusIcon } from "@radix-ui/react-icons";
 import { SoloRequest, prisma } from "db";
-import { revalidatePath, unstable_cache } from "next/cache";
+import { revalidatePath } from "next/cache";
 import { Button } from "ui/components/ui/button";
 import {
   Dialog,
@@ -47,19 +47,11 @@ export default async function SolosPage() {
     revalidatePath("/dashboard/solos");
   };
 
-  ("use server");
-  const solos = await unstable_cache(
-    async () =>
-      await prisma.solo.findMany({
-        orderBy: {
-          expiry: "asc",
-        },
-      }),
-    ["cache-key"],
-    {
-      tags: ["solo"],
-    }
-  )();
+  const solos = await prisma.solo.findMany({
+    orderBy: {
+      expiry: "asc",
+    },
+  });
 
   return (
     <div className="flex flex-col gap-y-4">

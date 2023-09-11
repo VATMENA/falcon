@@ -55,7 +55,9 @@ model Solo {
   position   String
   expiry     DateTime
   instructor String
-  count      Int      @default(1)
+  count      Int      @default(0)
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now()) @updatedAt
 }
 
 model Log {

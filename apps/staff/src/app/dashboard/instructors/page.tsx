@@ -47,20 +47,22 @@ export default async function Instructors() {
           user={session!.user.user}
         />
       </div>
-      <Dialog>
-        <DialogTrigger asChild>
-          <Button>
-            <PlusIcon className="h-8 w-8 pr-2" />
-            Add
-          </Button>
-        </DialogTrigger>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Add New Instructor...</DialogTitle>
-          </DialogHeader>
-          <AddInstructorForm addInstructor={addInstructor} />
-        </DialogContent>
-      </Dialog>
+      {session!.user.user && (
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button>
+              <PlusIcon className="h-8 w-8 pr-2" />
+              Add
+            </Button>
+          </DialogTrigger>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Add New Instructor...</DialogTitle>
+            </DialogHeader>
+            <AddInstructorForm addInstructor={addInstructor} />
+          </DialogContent>
+        </Dialog>
+      )}
     </div>
   );
 }

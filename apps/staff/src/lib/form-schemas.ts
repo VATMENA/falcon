@@ -30,9 +30,7 @@ export const soloFormSchema = z.object({
   }),
   expiry: z.date(),
   instructor: z.string(),
-  count: z.coerce.number().min(1).max(3, {
-    message: "You can only issue a solo 3 times for one member.",
-  }),
+  count: z.coerce.number(),
 });
 
 export const examFormSchema = z.object({

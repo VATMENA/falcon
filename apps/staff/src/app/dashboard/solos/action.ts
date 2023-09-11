@@ -3,15 +3,26 @@
 import { soloFormSchema } from "@/lib/form-schemas";
 import { getUserSession } from "@/utils/session";
 import { SoloRequest, prisma } from "db";
-import { revalidateTag } from "next/cache";
+import { revalidatePath } from "next/cache";
 import { z } from "zod";
 
-export const addSoloRequest = async (input: z.infer<typeof soloFormSchema>) => {
+export const addSoloRequest = async ({
+  expiry,
+  ...input
+}: z.infer<typeof soloFormSchema>) => {
   const session = await getUserSession();
 
   try {
+    const utcExpiry = Date.UTC(
+      expiry.getFullYear(),
+      expiry.getMonth(),
+      expiry.getDate()
+    );
     await prisma.soloRequest.create({
-      data: input,
+      data: {
+        expiry: new Date(utcExpiry),
+        ...input,
+      },
     });
   } catch (error) {
     console.error(error);
@@ -24,11 +35,50 @@ export const addSoloRequest = async (input: z.infer<typeof soloFormSchema>) => {
         session!.user.cid
       }): Made a solo request for ${input.full_name}(${input.cid}) on ${
         input.position
-      } which expires on ${new Date(input.expiry).toDateString()}`,
+      } which expires on ${new Date(expiry).toDateString()}`,
       cid: input.cid,
     },
   });
-  revalidateTag("solo");
+  revalidatePath("/dashboard/solos");
+};
+
+export const updateSolo = async ({
+  expiry,
+  ...input
+}: z.infer<typeof soloFormSchema>) => {
+  const session = await getUserSession();
+
+  try {
+    const utcExpiry = Date.UTC(
+      expiry.getFullYear(),
+      expiry.getMonth(),
+      expiry.getDate()
+    );
+    await prisma.solo.update({
+      where: {
+        cid: input.cid,
+      },
+      data: {
+        expiry: new Date(utcExpiry),
+        ...input,
+      },
+    });
+  } catch (error) {
+    console.error(error);
+  }
+
+  await prisma.log.create({
+    data: {
+      type: "SOLO",
+      message: `${session!.user.fullName} (${
+        session!.user.cid
+      }): Extended solo for ${input.full_name}(${input.cid}) on ${
+        input.position
+      } which expires on ${new Date(expiry).toDateString()}`,
+      cid: input.cid,
+    },
+  });
+  revalidatePath("/dashboard/solos");
 };
 
 export const addSolo = async (request: SoloRequest) => {
@@ -65,7 +115,7 @@ export const addSolo = async (request: SoloRequest) => {
       cid: request.cid,
     },
   });
-  revalidateTag("solo");
+  revalidatePath("/dashboard/solos");
 };
 
 export const deleteSolo = async (cid: string) => {
@@ -86,5 +136,5 @@ export const deleteSolo = async (cid: string) => {
       cid: solo.cid,
     },
   });
-  revalidateTag("solo");
+  revalidatePath("/dashboard/solos");
 };

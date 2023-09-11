@@ -1,10 +1,12 @@
 "use client";
 
-import { addSoloRequest } from "@/app/dashboard/solos/action";
+import { addSoloRequest, updateSolo } from "@/app/dashboard/solos/action";
 import { soloFormSchema } from "@/lib/form-schemas";
+import { daysLeft } from "@/utils/days-left";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CalendarIcon, ReloadIcon } from "@radix-ui/react-icons";
 import { addDays, format } from "date-fns";
+import { Solo } from "db";
 import { useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { Button } from "ui/components/ui/button";
@@ -26,19 +28,34 @@ import {
 import { cn } from "ui/lib/utils";
 import { z } from "zod";
 
-export const SoloForm = () => {
+// add optional default values prop
+export const SoloForm = ({ solo }: { solo?: Solo }) => {
   let [isLoading, startTransition] = useTransition();
 
   const form = useForm<z.infer<typeof soloFormSchema>>({
     resolver: zodResolver(soloFormSchema),
+    defaultValues: solo
+      ? {
+          ...solo,
+          count: daysLeft({ updated_at: solo.updated_at, expiry: solo.expiry }),
+        }
+      : undefined,
   });
 
   return (
     <Form {...form}>
       <form
-        onSubmit={form.handleSubmit((data) =>
-          startTransition(() => addSoloRequest(data))
-        )}
+        // onSubmit={form.handleSubmit((data) =>
+        //   startTransition(() => addSoloRequest(data))
+        // )}
+        onSubmit={form.handleSubmit((data) => {
+          if (solo) {
+            // update
+            startTransition(() => updateSolo(data));
+          } else {
+            startTransition(() => addSoloRequest(data));
+          }
+        })}
         className=""
       >
         <div className="grid gap-4 py-4 grid-cols-1 sm:grid-cols-2">
@@ -144,7 +161,7 @@ export const SoloForm = () => {
               <FormItem className="flex flex-col">
                 <FormLabel>Solo Count</FormLabel>
                 <FormControl>
-                  <Input type="number" defaultValue={1} {...field} />
+                  <Input type="number" defaultValue={0} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>

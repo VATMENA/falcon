@@ -113,9 +113,7 @@ export const ExamForm = () => {
                         mode="single"
                         selected={field.value}
                         onSelect={field.onChange}
-                        disabled={(date: Date) =>
-                          date < addDays(new Date(), 14)
-                        }
+                        disabled={(date: Date) => date < addDays(new Date(), 7)}
                         initialFocus
                       />
                     </PopoverContent>

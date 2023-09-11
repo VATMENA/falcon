@@ -46,7 +46,7 @@ export default async function TransfersPage() {
   return (
     <div className="flex flex-col gap-y-4">
       <div className="flex flex-col gap-y-2">
-        <div className="text-3xl font-bold">Transfers</div>
+        <div className="sm:text-5xl text-3xl font-bold">Transfers</div>
         <Card className="w-80">
           <CardHeader>
             <CardTitle>Transfer Request Form</CardTitle>
