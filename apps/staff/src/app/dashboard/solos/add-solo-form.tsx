@@ -161,7 +161,7 @@ export const SoloForm = ({ solo }: { solo?: Solo }) => {
               <FormItem className="flex flex-col">
                 <FormLabel>Solo Count</FormLabel>
                 <FormControl>
-                  <Input type="number" defaultValue={0} {...field} />
+                  <Input type="number" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>

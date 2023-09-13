@@ -86,13 +86,7 @@ export const addSolo = async (request: SoloRequest) => {
 
   try {
     await prisma.solo.create({
-      data: {
-        cid: request.cid,
-        full_name: request.full_name,
-        instructor: request.instructor,
-        position: request.position,
-        expiry: request.expiry,
-      },
+      data: request,
     });
   } catch (error) {
     console.error(error);
