@@ -5,17 +5,17 @@ import { DivisionMembersResponse } from "@/types/subdivisions";
 export const getDivisionMembers = async () => {
   const members = await fetch(
     `${VATSIM_API_URL}/orgs/division/MENA?` +
-      new URLSearchParams({
-        limit: "10000",
-      }),
+    new URLSearchParams({
+      limit: "10000",
+    }),
     {
       headers: {
         "X-API-Key": process.env.VATSIM_API_KEY!,
       },
       next: {
-        revalidate: 60 * 60 * 24,
+        revalidate: 60 * 60 * 2,
       },
-    }
+    },
   );
 
   return (await members.json()) as DivisionMembersResponse;

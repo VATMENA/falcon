@@ -12,7 +12,7 @@
     "ui:add": "pnpm --filter ui ui:add"
   },
   "dependencies": {
-    "turbo": "latest"
+    "turbo": "^1.10.14"
   },
   "devDependencies": {
     "dotenv-cli": "^7.3.0"
