@@ -18,15 +18,25 @@ model User {
   rating      String
   subdivision String  @default("")
 
-  access   Boolean @default(false)
-  log      Boolean @default(false)
-  upgrade  Boolean @default(false)
-  transfer Boolean @default(false)
-  solo     Boolean @default(false)
-  user     Boolean @default(false)
+  access           Boolean         @default(false)
+  division_role    DivisionRole    @default(Other)
+  subdivision_role SubdivisionRole @default(Other)
 
   auth_session Session[]
   auth_key     Key[]
+}
+
+enum DivisionRole {
+  Admin
+  ATC
+  Membership
+  Other
+}
+
+enum SubdivisionRole {
+  Director
+  ATC
+  Other
 }
 
 model Session {

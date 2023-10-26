@@ -14,16 +14,13 @@ export const auth = lucia({
 
   getUserAttributes: (data) => {
     return {
+      cid: data.cid,
       fullName: data.full_name,
       rating: data.rating,
       subdivision: data.subdivision,
       access: data.access,
-      solo: data.solo,
-      log: data.log,
-      upgrade: data.upgrade,
-      transfer: data.transfer,
-      user: data.user,
-      cid: data.cid,
+      divisionRole: data.division_role,
+      subdivisionRole: data.subdivision_role,
     };
   },
 });

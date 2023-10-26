@@ -1,115 +1,118 @@
 "use client";
 
+import { checkAccess } from "@/utils/checkAccess";
 import {
-  ColumnDef,
-  ColumnFiltersState,
-  flexRender,
-  getCoreRowModel,
-  getFilteredRowModel,
-  useReactTable,
+	ColumnDef,
+	ColumnFiltersState,
+	flexRender,
+	getCoreRowModel,
+	getFilteredRowModel,
+	useReactTable,
 } from "@tanstack/react-table";
+import { DivisionRole } from "db";
 import { useState } from "react";
 import { Input } from "ui/components/ui/input";
 import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
+	Table,
+	TableBody,
+	TableCell,
+	TableHead,
+	TableHeader,
+	TableRow,
 } from "ui/components/ui/table";
 
 interface DataTableProps<TData, TValue> {
-  columns: ColumnDef<TData, TValue>[];
-  data: TData[];
-  user: boolean;
+	columns: ColumnDef<TData, TValue>[];
+	data: TData[];
+	userDivisionRole: DivisionRole;
 }
 
 export function InstructorsTable<TData, TValue>({
-  columns,
-  data,
-  user,
+	columns,
+	data,
+	userDivisionRole,
 }: DataTableProps<TData, TValue>) {
-  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
+	const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 
-  const table = useReactTable({
-    data,
-    columns,
-    getCoreRowModel: getCoreRowModel(),
-    getFilteredRowModel: getFilteredRowModel(),
-    onColumnFiltersChange: setColumnFilters,
-    state: {
-      columnFilters,
-    },
-  });
+	const table = useReactTable({
+		data,
+		columns,
+		getCoreRowModel: getCoreRowModel(),
+		getFilteredRowModel: getFilteredRowModel(),
+		onColumnFiltersChange: setColumnFilters,
+		state: {
+			columnFilters,
+		},
+	});
 
-  return (
-    <div className="flex flex-col gap-y-4">
-      <Input
-        placeholder="Filter CID..."
-        value={(table.getColumn("cid")?.getFilterValue() as string) ?? ""}
-        onChange={(event) =>
-          table.getColumn("cid")?.setFilterValue(event.target.value)
-        }
-        className="max-w-sm"
-      />
-      <div className="rounded-md border">
-        <Table>
-          <TableHeader>
-            {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id}>
-                {headerGroup.headers.map((header) => {
-                  if (header.id === "delete" && user == false) return null;
+	return (
+		<div className="flex flex-col gap-y-4">
+			<Input
+				placeholder="Filter CID..."
+				value={(table.getColumn("cid")?.getFilterValue() as string) ?? ""}
+				onChange={(event) =>
+					table.getColumn("cid")?.setFilterValue(event.target.value)
+				}
+				className="max-w-sm"
+			/>
+			<div className="rounded-md border">
+				<Table>
+					<TableHeader>
+						{table.getHeaderGroups().map((headerGroup) => (
+							<TableRow key={headerGroup.id}>
+								{headerGroup.headers.map((header) => {
+									if (header.id === "delete" && !checkAccess("ATC", userDivisionRole))
+										return null;
 
-                  return (
-                    <TableHead key={header.id}>
-                      {header.isPlaceholder
-                        ? null
-                        : flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
-                          )}
-                    </TableHead>
-                  );
-                })}
-              </TableRow>
-            ))}
-          </TableHeader>
-          <TableBody>
-            {table.getRowModel().rows?.length ? (
-              table.getRowModel().rows.map((row) => (
-                <TableRow
-                  key={row.id}
-                  data-state={row.getIsSelected() && "selected"}
-                >
-                  {row.getVisibleCells().map((cell) => {
-                    if (cell.column.id === "delete" && user == false)
-                      return null;
+									return (
+										<TableHead key={header.id}>
+											{header.isPlaceholder
+												? null
+												: flexRender(
+													header.column.columnDef.header,
+													header.getContext(),
+												)}
+										</TableHead>
+									);
+								})}
+							</TableRow>
+						))}
+					</TableHeader>
+					<TableBody>
+						{table.getRowModel().rows?.length ? (
+							table.getRowModel().rows.map((row) => (
+								<TableRow
+									key={row.id}
+									data-state={row.getIsSelected() && "selected"}
+								>
+									{row.getVisibleCells().map((cell) => {
+										if (cell.column.id === "delete" && !checkAccess("ATC", userDivisionRole))
+											return null;
 
-                    return (
-                      <TableCell key={cell.id}>
-                        {flexRender(
-                          cell.column.columnDef.cell,
-                          cell.getContext()
-                        )}
-                      </TableCell>
-                    );
-                  })}
-                </TableRow>
-              ))
-            ) : (
-              <TableRow>
-                <TableCell
-                  colSpan={columns.length}
-                  className="h-24 text-center"
-                >
-                  No results.
-                </TableCell>
-              </TableRow>
-            )}
-          </TableBody>
-        </Table>
-      </div>
-    </div>
-  );
+										return (
+											<TableCell key={cell.id}>
+												{flexRender(
+													cell.column.columnDef.cell,
+													cell.getContext(),
+												)}
+											</TableCell>
+										);
+									})}
+								</TableRow>
+							))
+						) : (
+							<TableRow>
+								<TableCell
+									colSpan={columns.length}
+									className="h-24 text-center"
+								>
+									No results.
+								</TableCell>
+							</TableRow>
+						)}
+					</TableBody>
+				</Table>
+			</div>
+		</div>
+	);
 }
