@@ -11,7 +11,7 @@ import { redirect } from "next/navigation";
 
 export default async function LogsPage() {
 	const session = await getUserSession();
-	if (checkAccess("Admin", session!.user.divisionRole)) return redirect("/dashboard");
+	if (!checkAccess("Admin", session!.user.divisionRole)) return redirect("/dashboard");
 
 	return (
 		<div className="flex flex-col gap-y-4">
