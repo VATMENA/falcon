@@ -3,6 +3,7 @@ import { SoloForm } from "@/app/dashboard/solos/add-solo-form";
 import { ApproveButton, DenyButton } from "@/app/dashboard/solos/buttons";
 import { solosColumns } from "@/app/dashboard/solos/columns";
 import { SolosTable } from "@/app/dashboard/solos/data-table";
+import { checkAccess } from "@/utils/checkAccess";
 import { getUserSession } from "@/utils/session";
 import { PlusIcon } from "@radix-ui/react-icons";
 import { SoloRequest, prisma } from "db";
@@ -68,7 +69,7 @@ export default async function SolosPage() {
 								{request.full_name}({request.cid}) for {request.position} which
 								expires on {request.expiry.toDateString()}
 							</div>
-							{session!.user.divisionRole === "ATC" && (
+							{checkAccess("ATC", session!.user.divisionRole) && (
 								<>
 									<ApproveButton request={request} approve={approve} />
 									<DenyButton request={request} deny={deny} />
