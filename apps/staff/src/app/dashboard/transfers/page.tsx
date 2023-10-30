@@ -65,7 +65,7 @@ export default async function TransfersPage() {
 								{request.cid}: Transfer to {request.subdivision} with comment
 								&quot;{request.comment}&quot;
 							</div>
-							{checkAccess("ATC", session!.user.divisionRole) && (
+							{checkAccess("Membership", session!.user.divisionRole) && (
 								<>
 									<ApproveButton request={request} approve={approve} />
 									<DenyButton request={request} deny={deny} />
