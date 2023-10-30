@@ -10,6 +10,9 @@
     "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {
+    "@fullcalendar/core": "^6.1.9",
+    "@fullcalendar/daygrid": "^6.1.9",
+    "@fullcalendar/react": "^6.1.9",
     "@hookform/resolvers": "^3.1.1",
     "@lucia-auth/oauth": "^3.0.0",
     "@types/node": "20.4.5",
