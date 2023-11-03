@@ -5,8 +5,8 @@
 		"baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
-			"ui/*", ["../../packages/ui/*"],
-			"ui/components/ui/*", ["../../packages/ui/components/ui/*"]
+			"ui/*": ["../../packages/ui/*"],
+			"ui/components/ui/*": ["../../packages/ui/components/ui/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
