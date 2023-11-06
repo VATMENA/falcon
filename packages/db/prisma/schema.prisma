@@ -36,6 +36,7 @@ enum DivisionRole {
 enum SubdivisionRole {
   Director
   ATC
+  Mentor
   Other
 }
 

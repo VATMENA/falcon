@@ -5,24 +5,29 @@ import { nextjs } from "lucia/middleware";
 import "lucia/polyfill/node";
 
 export const auth = lucia({
-  env: "DEV",
-  middleware: nextjs(),
-  adapter: prismaAdapter(prisma),
-  sessionCookie: {
-    expires: false,
-  },
+	env: "DEV",
+	middleware: nextjs(),
+	adapter: prismaAdapter(prisma),
+	sessionCookie: {
+		expires: false,
+	},
 
-  getUserAttributes: (data) => {
-    return {
-      cid: data.cid,
-      fullName: data.full_name,
-      rating: data.rating,
-      subdivision: data.subdivision,
-      access: data.access,
-      divisionRole: data.division_role,
-      subdivisionRole: data.subdivision_role,
-    };
-  },
+	csrfProtection: {
+		allowedSubDomains: "*",
+		baseDomain: "vatsim.me",
+	},
+
+	getUserAttributes: (data) => {
+		return {
+			cid: data.cid,
+			fullName: data.full_name,
+			rating: data.rating,
+			subdivision: data.subdivision,
+			access: data.access,
+			divisionRole: data.division_role,
+			subdivisionRole: data.subdivision_role,
+		};
+	},
 });
 
 export type Auth = typeof auth;

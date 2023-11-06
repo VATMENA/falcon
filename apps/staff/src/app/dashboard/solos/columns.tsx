@@ -35,7 +35,7 @@ export const solosColumns: ColumnDef<Solo>[] = [
     header: "Expiry (zulu time)",
     cell: ({ row }) => {
       const daysLeft = Math.round(
-        (row.original.expiry.getTime() - Date.now()) / (1000 * 60 * 60 * 24)
+        (row.original.expiry.getTime() - Date.now()) / (1000 * 60 * 60 * 24),
       );
       return (
         <div
@@ -45,7 +45,7 @@ export const solosColumns: ColumnDef<Solo>[] = [
               ? "text-yellow-400"
               : daysLeft < 0
               ? "text-red-500"
-              : ""
+              : "",
           )}
         >
           {row.original.expiry.toDateString()}
@@ -71,13 +71,13 @@ export const solosColumns: ColumnDef<Solo>[] = [
   },
   {
     id: "delete",
-    cell: ({ cell, row }) => {
+    cell: ({ row }) => {
       // eslint-disable-next-line react-hooks/rules-of-hooks
       const [isLoading, startTransition] = useTransition();
 
       const daysLeft = Math.round(
         (new Date(row.original.expiry).getTime() - Date.now()) /
-          (1000 * 60 * 60 * 24)
+          (1000 * 60 * 60 * 24),
       );
 
       return !isLoading && daysLeft < 0 ? (

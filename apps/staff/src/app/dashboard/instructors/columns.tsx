@@ -34,7 +34,7 @@ export const instructorsColumns: ColumnDef<Instructor>[] = [
   },
   {
     id: "delete",
-    cell: ({ cell, row }) => {
+    cell: ({ row }) => {
       // eslint-disable-next-line react-hooks/rules-of-hooks
       const [isLoading, startTransition] = useTransition();
 
