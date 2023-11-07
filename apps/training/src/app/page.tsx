@@ -1,12 +1,12 @@
+import { getUserSession } from "@/utils/session";
 import Image from "next/image";
 import Link from "next/link";
-import { getUserSession } from "@/utils/session";
 import { redirect } from "next/navigation";
 import { Button } from "ui/components/ui/button";
 
 export default async function Home() {
   const session = await getUserSession();
-  if (session) redirect("/dashboard");
+  if (session) return redirect("/dashboard");
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center">

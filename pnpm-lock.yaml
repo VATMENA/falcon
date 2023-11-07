@@ -46,13 +46,13 @@ importers:
         specifier: ^1.0.2
         version: 1.0.2
       auth:
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../packages/auth
       autoprefixer:
         specifier: 10.4.14
         version: 10.4.14(postcss@8.4.27)
       db:
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../packages/db
       eslint:
         specifier: 8.45.0
@@ -82,13 +82,13 @@ importers:
         specifier: 3.3.3
         version: 3.3.3
       tsconfig:
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../packages/tsconfig
       typescript:
         specifier: 5.1.6
         version: 5.1.6
       ui:
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../packages/ui
       zod:
         specifier: ^3.21.4
@@ -214,6 +214,9 @@ importers:
       db:
         specifier: workspace:*
         version: link:../../packages/db
+      geist:
+        specifier: ^1.0.0
+        version: 1.0.0
       lucia:
         specifier: ^2.0.0
         version: 2.0.0
@@ -566,6 +569,10 @@ packages:
     dependencies:
       glob: 7.1.7
     dev: true
+
+  /@next/font@13.5.6:
+    resolution: {integrity: sha512-urmUq05uCVJsBqAAJEV+xK5OTTodrSxdiG+351SOSjlWctywdBM6qX+K9pIe3K48RxjfnxlBbXjGyOJAji+pfw==}
+    dev: false
 
   /@next/swc-darwin-arm64@13.4.13:
     resolution: {integrity: sha512-ZptVhHjzUuivnXMNCJ6lER33HN7lC+rZ01z+PM10Ows21NHFYMvGhi5iXkGtBDk6VmtzsbqnAjnx4Oz5um0FjA==}
@@ -2376,6 +2383,12 @@ packages:
 
   /functions-have-names@1.2.3:
     resolution: {integrity: sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==}
+
+  /geist@1.0.0:
+    resolution: {integrity: sha512-7hqXZqIdSiFbXjlMZ8Ag0fBAW8RzUjIXPkh160rT4m4ECMtsKdFX+06e0mK28oRCpU+lOB1C5Es8qxzvv7H2Hg==}
+    dependencies:
+      '@next/font': 13.5.6
+    dev: false
 
   /get-intrinsic@1.2.1:
     resolution: {integrity: sha512-2DcsyfABl+gVHEfCOaTrWgyt+tb6MSEGmKq+kI5HwLbIYgjgmMcV8KQ41uaKz1xxUcn9tJtgFbQUEVcEbd0FYw==}
