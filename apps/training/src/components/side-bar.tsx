@@ -10,6 +10,7 @@ import { useSelectedLayoutSegment } from "next/navigation";
 import { useState } from "react";
 import { Button } from "ui/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "ui/components/ui/sheet";
+import Image from "next/image";
 
 interface NavItem {
   title: string;
@@ -99,7 +100,7 @@ export const Sidebar: React.FC<{ user: User }> = ({ user }) => {
   const segment = useSelectedLayoutSegment();
 
   return (
-    <div className="hidden md:flex flex-col h-full min-w-[300px] border-r px-8 pt-4 gap-y-4">
+    <div className="hidden md:flex flex-col h-full min-w-[300px] border-r px-8 p-4 gap-y-4">
       <div className="flex flex-col gap-y-1">
         {navItems.map((navItem, idx) => {
           if (

@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/nav-bar";
 import { Sidebar } from "@/components/side-bar";
 import { getUserSession } from "@/utils/session";
+import { ReloadIcon } from "@radix-ui/react-icons";
 import { redirect } from "next/navigation";
 import { Suspense } from "react";
 
@@ -13,14 +14,18 @@ export default async function DashboardLayout({
   if (!session) return redirect("/");
 
   return (
-    <Suspense fallback={<p>loading</p>}>
-      <div className="flex h-full w-full flex-col">
-        <Navbar user={session.user} />
-        <div className="flex h-full grow">
-          <Sidebar user={session.user} />
-          <div className="flex w-full h-full flex-col p-8 lg:px-20">
-            {children}
-          </div>
+    <Suspense
+      fallback={
+        <div className="flex h-full w-full justify-center items-center">
+          <ReloadIcon className="h-8 w-8 animate-spin" />
+        </div>
+      }
+    >
+      <Navbar user={session.user} />
+      <div className="flex h-full w-full overflow-y-auto">
+        <Sidebar user={session.user} />
+        <div className="flex flex-col w-full p-8 overflow-y-auto lg:px-20">
+          {children}
         </div>
       </div>
     </Suspense>

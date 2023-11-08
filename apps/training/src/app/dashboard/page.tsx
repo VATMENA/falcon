@@ -1,16 +1,38 @@
+import { EventResponse } from "@/types/events";
 import { getUserSession } from "@/utils/session";
-import { CalendarIcon, VideoIcon } from "@radix-ui/react-icons";
-import Link from "next/link";
+import { EventInput } from "@fullcalendar/core/index.js";
+import { Suspense } from "react";
 import {
   Card,
   CardContent,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "ui/components/ui/card";
+import {
+  ObservationRequestsCard,
+  TrainingRequestsCard,
+} from "./(main-page)/cards";
+import { EventsCalendar } from "./(main-page)/events-calendar";
 
 export default async function DashboardPage() {
   const session = await getUserSession();
+
+  const getEvents = async () => {
+    const response = await fetch(
+      "https://my.vatsim.net/api/v2/events/view/division/MENA",
+    );
+    const eventsData = (await response.json()) as EventResponse;
+    let events: EventInput[] = [];
+    eventsData.data.forEach((event) => {
+      events.push({
+        title: event.name,
+        start: event.start_time,
+        end: event.end_time,
+        url: event.link,
+      });
+    });
+    return events;
+  };
 
   return (
     <div className="flex flex-col w-full gap-y-8">
@@ -21,39 +43,17 @@ export default async function DashboardPage() {
         </p>
       </div>
       <div className="flex flex-col lg:flex-row w-full justify-between gap-4">
-        <Card className="w-full bg-secondary/40">
-          <CardHeader>
-            <CardTitle>Training Requests</CardTitle>
-          </CardHeader>
-          <CardContent className="flex justify-between items-center">
-            <h1 className="text-5xl font-bold">3</h1>
-            <div className="h-12 w-12 bg-secondary rounded-md">
-              <CalendarIcon className="w-full h-full p-2" />
-            </div>
-          </CardContent>
-          <CardFooter className="flex border-t px-6 py-4">
-            <Link href="/dashboard/requests">
-              View all training requests &rarr;
-            </Link>
-          </CardFooter>
-        </Card>
-        <Card className="w-full bg-secondary/40">
-          <CardHeader>
-            <CardTitle>Observation Requests</CardTitle>
-          </CardHeader>
-          <CardContent className="flex justify-between items-center">
-            <h1 className="text-5xl font-bold">1</h1>
-            <div className="h-12 w-12 bg-secondary rounded-md">
-              <VideoIcon className="w-full h-full p-2" />
-            </div>
-          </CardContent>
-          <CardFooter className="flex border-t px-6 py-4">
-            <Link href="/dashboard/requests">
-              View all observation requests &rarr;
-            </Link>
-          </CardFooter>
-        </Card>
+        <TrainingRequestsCard />
+        <ObservationRequestsCard />
       </div>
+      <Card className="bg-secondary/40">
+        <CardHeader>
+          <CardTitle>Calendar</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <EventsCalendar events={await getEvents()} />
+        </CardContent>
+      </Card>
     </div>
   );
 }

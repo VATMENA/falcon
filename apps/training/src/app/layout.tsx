@@ -1,6 +1,7 @@
 import { GeistSans } from "geist/font";
 import type { Metadata } from "next";
 import { Toaster } from "ui/components/ui/toaster";
+import { cn } from "ui/lib/utils";
 import "ui/styles/globals.css";
 
 export const metadata: Metadata = {
@@ -14,9 +15,9 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`dark ${GeistSans.className}`}>
-      <body className="overscroll-none">
-        <div className="flex h-screen w-full grow flex-col">{children}</div>
+    <html lang="en">
+      <body className={cn("dark overscroll-none", GeistSans.className)}>
+        <div className="flex flex-col h-screen overflow-hidden">{children}</div>
         <Toaster />
       </body>
     </html>
