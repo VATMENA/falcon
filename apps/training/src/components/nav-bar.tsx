@@ -35,7 +35,7 @@ export const Navbar: React.FC<{ user: User }> = ({ user }) => {
         </div>
         <MobileNav user={user} />
       </div>
-      <div className="flex items-center gap-x-2 pr-12">
+      <div className="flex items-center gap-x-2">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant={"outline"}>

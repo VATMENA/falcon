@@ -24,8 +24,8 @@ export default async function DashboardLayout({
       <Navbar user={session.user} />
       <div className="flex h-full w-full overflow-y-auto">
         <Sidebar user={session.user} />
-        <div className="flex flex-col w-full p-8 overflow-y-auto lg:px-20">
-          {children}
+        <div className="flex flex-col w-full items-center p-8 overflow-y-auto lg:px-20">
+          <div className="flex flex-col w-full max-w-[1800px]">{children}</div>
         </div>
       </div>
     </Suspense>
