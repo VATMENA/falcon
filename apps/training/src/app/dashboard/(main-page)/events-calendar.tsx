@@ -1,8 +1,7 @@
 "use client";
 import { EventInput } from "@fullcalendar/core/index.js";
-import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
-import { Suspense } from "react";
+import FullCalendar from "@fullcalendar/react";
 
 export const EventsCalendar: React.FC<{ events: EventInput[] }> = ({
   events,

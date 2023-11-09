@@ -1,7 +1,6 @@
 import { EventResponse } from "@/types/events";
 import { getUserSession } from "@/utils/session";
 import { EventInput } from "@fullcalendar/core/index.js";
-import { Suspense } from "react";
 import {
   Card,
   CardContent,

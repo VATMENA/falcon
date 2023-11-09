@@ -1,7 +1,18 @@
+import { ChevronDownIcon } from "@radix-ui/react-icons";
+import { User } from "lucia";
 import Image from "next/image";
 import Link from "next/link";
+import { Button } from "ui/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "ui/components/ui/dropdown-menu";
 import { MobileNav } from "./side-bar";
-import { User } from "lucia";
+import { LogoutButton } from "./logout-button";
 
 export const Navbar: React.FC<{ user: User }> = ({ user }) => {
   return (
@@ -23,6 +34,27 @@ export const Navbar: React.FC<{ user: User }> = ({ user }) => {
           </div>
         </div>
         <MobileNav user={user} />
+      </div>
+      <div className="flex items-center gap-x-2 pr-12">
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant={"outline"}>
+              {user.fullName.split(" ")[0]}
+              <ChevronDownIcon className="pl-1" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            <DropdownMenuLabel className="flex flex-col justify-center items-center px-8 py-4">
+              <h1 className="font-semibold text-2xl">{user.fullName}</h1>
+              <h1 className="font-normal text-lg text-muted-foreground">
+                {user.rating} Controller
+              </h1>
+            </DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>Profile</DropdownMenuItem>
+            <LogoutButton />
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
     </div>
   );

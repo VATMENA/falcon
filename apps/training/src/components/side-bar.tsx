@@ -10,7 +10,6 @@ import { useSelectedLayoutSegment } from "next/navigation";
 import { useState } from "react";
 import { Button } from "ui/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "ui/components/ui/sheet";
-import Image from "next/image";
 
 interface NavItem {
   title: string;
