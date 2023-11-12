@@ -22,8 +22,27 @@ model User {
   division_role    DivisionRole    @default(Other)
   subdivision_role SubdivisionRole @default(Other)
 
+  MentorRequests  TrainingRequest[] @relation("MentorRequests")
+  StudentRequests TrainingRequest[] @relation("StudentRequests")
+
   auth_session Session[]
   auth_key     Key[]
+}
+
+model TrainingRequest {
+  id              String   @id @unique
+  rating          String
+  start_date_time DateTime
+  end_date_time   DateTime
+
+  student_id String
+  student    User   @relation("StudentRequests", references: [id], fields: [student_id], onDelete: Cascade)
+
+  mentor_id String?
+  mentor    User?   @relation("MentorRequests", references: [id], fields: [mentor_id], onDelete: Cascade)
+
+  @@index([student_id])
+  @@index([mentor_id])
 }
 
 enum DivisionRole {
