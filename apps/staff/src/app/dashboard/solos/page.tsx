@@ -45,6 +45,24 @@ export default async function SolosPage() {
         id: request.id,
       },
     });
+    const response = await fetch(
+      `http://kirollos.rocks:6799/solos/request/${request.id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "X-API-Key": process.env.BOT_WEBHOOK_API_KEY!,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          updated_by: session!.user.fullName,
+          status: 3,
+          time: new Date(),
+        }),
+      },
+    );
+
+    console.log(response.statusText);
+
     revalidatePath("/dashboard/solos");
   };
 

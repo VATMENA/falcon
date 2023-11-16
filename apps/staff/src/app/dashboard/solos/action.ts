@@ -16,13 +16,33 @@ export const addSoloRequest = async ({
     const utcExpiry = Date.UTC(
       expiry.getFullYear(),
       expiry.getMonth(),
-      expiry.getDate()
+      expiry.getDate(),
     );
-    await prisma.soloRequest.create({
+    const solo = await prisma.soloRequest.create({
       data: {
         expiry: new Date(utcExpiry),
         ...input,
       },
+    });
+
+    await fetch("http://kirollos.rocks:6799/solos/request", {
+      method: "POST",
+      headers: {
+        "X-API-Key": process.env.BOT_WEBHOOK_API_KEY!,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id: solo.id,
+        requested_by: session!.user.fullName,
+        time: new Date(),
+        cid: input.cid,
+        full_name: input.full_name,
+        position: input.position,
+        expiry: new Date(utcExpiry),
+        instructor: input.instructor,
+        solo_count: input.count,
+        status: 0,
+      }),
     });
   } catch (error) {
     console.error(error);
@@ -52,7 +72,7 @@ export const updateSolo = async ({
     const utcExpiry = Date.UTC(
       expiry.getFullYear(),
       expiry.getMonth(),
-      expiry.getDate()
+      expiry.getDate(),
     );
     await prisma.solo.update({
       where: {
@@ -87,6 +107,18 @@ export const addSolo = async (request: SoloRequest) => {
   try {
     await prisma.solo.create({
       data: request,
+    });
+    await fetch(`http://kirollos.rocks:6799/solos/request/${request.id}`, {
+      method: "PATCH",
+      headers: {
+        "X-API-Key": process.env.BOT_WEBHOOK_API_KEY!,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        updated_by: session!.user.fullName,
+        status: 2,
+        time: new Date(),
+      }),
     });
   } catch (error) {
     console.error(error);
